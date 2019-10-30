@@ -1,0 +1,5 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\CommonClassLibrary\bin\Debug\CommonClassLibrary.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\CommonClassLibrary\bin\Debug\CommonClassLibrary.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\CommonClassLibrary\bin\Debug\Newtonsoft.Json.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\CommonClassLibrary\obj\Debug\CommonClassLibrary.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\CommonClassLibrary\obj\Debug\CommonClassLibrary.pdb

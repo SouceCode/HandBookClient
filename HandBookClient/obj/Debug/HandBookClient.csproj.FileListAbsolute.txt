@@ -1,0 +1,14 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\HandBookClient.exe.config
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.csprojResolveAssemblyReference.cache
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.Form1.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\HandBookClient.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\HandBookClient.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\CommonClassLibrary.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\ModelClassLibrary.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\Newtonsoft.Json.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\CommonClassLibrary.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\bin\Debug\ModelClassLibrary.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\HandBookClient\HandBookClient\obj\Debug\HandBookClient.pdb
