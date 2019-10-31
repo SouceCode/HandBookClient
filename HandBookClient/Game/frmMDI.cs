@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HandBookClient.Basic
+namespace HandBookClient.Game
 {
     public partial class frmMDI : Form
     {
@@ -25,8 +25,8 @@ namespace HandBookClient.Basic
 
         private void menuItemGameSetting_Click(object sender, EventArgs e)
         {
-            if (IsExistMDI("frmBookList")) { return; }   //防止重复打开窗体，新增如下代码
-            Basic.frmBookList frmGameSetting = new Basic.frmBookList();
+            if (IsExistMDI("frmGameSetting")) { return; }   //防止重复打开窗体，新增如下代码
+            Game.frmGameSettingList frmGameSetting = new Game.frmGameSettingList();
             frmGameSetting.MdiParent = this;
             frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
             frmGameSetting.Show();

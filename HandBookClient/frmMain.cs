@@ -28,7 +28,9 @@ namespace HandBookClient
             }
             else if (this.lsMenu.Items[1].Selected == true)
             {
-                //MessageBox.Show("经典电影");
+                HandBookClient.Game.frmMDI newForm = new HandBookClient.Game.frmMDI(this);//实例化窗体HandBookClient.Game.frmMDI，命名为newForm
+                newForm.Show();//将实例化后的窗体打开
+                this.Hide();//当前的窗体隐藏
             }
             else if (this.lsMenu.Items[2].Selected == true)
             {
