@@ -51,5 +51,10 @@ namespace HandBookClient.Basic
             }
             return false;
         }
+
+        private void frmMDI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.frmMain.Show();
+        }
     }
 }

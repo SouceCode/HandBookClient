@@ -55,7 +55,7 @@
             // menuItemGameSetting
             // 
             this.menuItemGameSetting.Name = "menuItemGameSetting";
-            this.menuItemGameSetting.Size = new System.Drawing.Size(152, 22);
+            this.menuItemGameSetting.Size = new System.Drawing.Size(100, 22);
             this.menuItemGameSetting.Text = "配置";
             this.menuItemGameSetting.Click += new System.EventHandler(this.menuItemGameSetting_Click);
             // 
@@ -69,6 +69,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMDI";
             this.Text = "基础配置";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMDI_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
