@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace HandBookClient.Basic
 {
-    public partial class frmGameSetting : Form
+    public partial class frmBook : Form
     {
-        public frmGameSetting()
+        public frmBook()
         {
             InitializeComponent();
             this.Text = "新增";
         }
         Base_Book base_book = new Base_Book();
-        public frmGameSetting(Base_Book obj)
+        public frmBook(Base_Book obj)
         {
             InitializeComponent();
             this.base_book = obj;

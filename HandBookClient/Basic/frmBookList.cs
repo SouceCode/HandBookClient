@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HandBookClient.Basic
 {
-    public partial class frmGameSettingList : Form
+    public partial class frmBookList : Form
     {
-        public frmGameSettingList()
+        public frmBookList()
         {
             InitializeComponent();
             this.btnSearch_Click();
@@ -72,7 +72,7 @@ namespace HandBookClient.Basic
         private void btnAdd_Click()
         {
 
-            frmGameSetting f1 = new frmGameSetting();//实例化窗体
+            frmBook f1 = new frmBook();//实例化窗体
             this.Visible = false;//设置当前窗体为不可视
 
             f1.ShowDialog();//打开窗体f1
@@ -94,7 +94,7 @@ namespace HandBookClient.Basic
                     base_BookObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
                     base_BookObject.CreateDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells[3].Value);
 
-                    frmGameSetting f1 = new frmGameSetting(base_BookObject);//实例化窗体
+                    frmBook f1 = new frmBook(base_BookObject);//实例化窗体
                     this.Visible = false;//设置当前窗体为不可视
                     f1.ShowDialog();//打开窗体f1
                     this.Visible = true;

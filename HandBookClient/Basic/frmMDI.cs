@@ -26,7 +26,7 @@ namespace HandBookClient.Basic
         private void menuItemGameSetting_Click(object sender, EventArgs e)
         {
             if (IsExistMDI("frmGameSetting")) { return; }   //防止重复打开窗体，新增如下代码
-            Basic.frmGameSettingList frmGameSetting = new Basic.frmGameSettingList();
+            Basic.frmBookList frmGameSetting = new Basic.frmBookList();
             frmGameSetting.MdiParent = this;
             frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
             frmGameSetting.Show();

@@ -1,6 +1,6 @@
 ﻿namespace HandBookClient.Basic
 {
-    partial class frmGameSetting
+    partial class frmBook
     {
         /// <summary>
         /// Required designer variable.

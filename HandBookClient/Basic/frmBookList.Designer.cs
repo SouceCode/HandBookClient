@@ -1,6 +1,6 @@
 ﻿namespace HandBookClient.Basic
 {
-    partial class frmGameSettingList
+    partial class frmBookList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGameSettingList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBookList));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolBar1 = new System.Windows.Forms.ToolBar();
             this.btnSearch = new System.Windows.Forms.ToolBarButton();
@@ -119,7 +119,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(524, 228);
             this.dataGridView1.TabIndex = 2;
             // 
-            // frmGameSettingList
+            // frmBookList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,8 +127,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grbFilter);
             this.Controls.Add(this.toolBar1);
-            this.Name = "frmGameSettingList";
-            this.Text = "游戏配置";
+            this.Name = "frmBookList";
+            this.Text = "号码簿配置";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

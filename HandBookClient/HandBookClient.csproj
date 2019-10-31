@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic\frmGameSetting.cs">
+    <Compile Include="Basic\frmBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Basic\frmGameSetting.Designer.cs">
-      <DependentUpon>frmGameSetting.cs</DependentUpon>
+    <Compile Include="Basic\frmBook.Designer.cs">
+      <DependentUpon>frmBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Basic\frmMDI.cs">
       <SubType>Form</SubType>
@@ -62,11 +62,11 @@
     <Compile Include="Basic\frmMDI.Designer.cs">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Basic\frmGameSettingList.cs">
+    <Compile Include="Basic\frmBookList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Basic\frmGameSettingList.Designer.cs">
-      <DependentUpon>frmGameSettingList.cs</DependentUpon>
+    <Compile Include="Basic\frmBookList.Designer.cs">
+      <DependentUpon>frmBookList.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -82,14 +82,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Basic\frmGameSetting.resx">
-      <DependentUpon>frmGameSetting.cs</DependentUpon>
+    <EmbeddedResource Include="Basic\frmBook.resx">
+      <DependentUpon>frmBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Basic\frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Basic\frmGameSettingList.resx">
-      <DependentUpon>frmGameSettingList.cs</DependentUpon>
+    <EmbeddedResource Include="Basic\frmBookList.resx">
+      <DependentUpon>frmBookList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
