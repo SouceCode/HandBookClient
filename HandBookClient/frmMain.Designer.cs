@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("基础配置", 2);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("基础配置", 2);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lsMenu = new System.Windows.Forms.ListView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lsMenu
             // 
             this.lsMenu.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.lsMenu.LargeImageList = this.imageList1;
             this.lsMenu.Location = new System.Drawing.Point(52, 40);
             this.lsMenu.Name = "lsMenu";
@@ -48,6 +48,15 @@
             this.lsMenu.TabIndex = 0;
             this.lsMenu.UseCompatibleStateImageBehavior = false;
             this.lsMenu.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsMenu_MouseDoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "game_96px.ico");
+            this.imageList1.Images.SetKeyName(1, "game_128px.ico");
+            this.imageList1.Images.SetKeyName(2, "basicdata_128px.ico");
+            this.imageList1.Images.SetKeyName(3, "basicdata_96px.ico");
             // 
             // checkBox1
             // 
@@ -60,15 +69,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "game_96px.ico");
-            this.imageList1.Images.SetKeyName(1, "game_128px.ico");
-            this.imageList1.Images.SetKeyName(2, "basicdata_128px.ico");
-            this.imageList1.Images.SetKeyName(3, "basicdata_96px.ico");
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -77,6 +77,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lsMenu);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主控制台";
             this.ResumeLayout(false);
             this.PerformLayout();

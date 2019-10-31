@@ -89,6 +89,7 @@
             this.Controls.Add(this.lblRemark);
             this.Controls.Add(this.lblName);
             this.Name = "frmGameSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

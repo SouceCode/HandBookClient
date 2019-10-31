@@ -119,7 +119,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(524, 228);
             this.dataGridView1.TabIndex = 2;
             // 
-            // frmGameSetting
+            // frmGameSettingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,7 +127,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grbFilter);
             this.Controls.Add(this.toolBar1);
-            this.Name = "frmGameSetting";
+            this.Name = "frmGameSettingList";
             this.Text = "游戏配置";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
