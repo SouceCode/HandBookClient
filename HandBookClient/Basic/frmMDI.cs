@@ -28,8 +28,9 @@ namespace HandBookClient.Basic
             if (IsExistMDI("frmGameSetting")) { return; }   //防止重复打开窗体，新增如下代码
             Basic.frmGameSettingList frmGameSetting = new Basic.frmGameSettingList();
             frmGameSetting.MdiParent = this;
+            frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
             frmGameSetting.Show();
-            this.LayoutMdi(MdiLayout.Cascade);
+            //this.LayoutMdi(MdiLayout.Cascade);
         }
         /// <summary>
         /// 判断是否有重复的窗体
