@@ -31,8 +31,20 @@ namespace HandBookClient
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.txtName.Text) )
+            {
+                MessageBox.Show("请填写必填项！","警告");
+                this.txtName.Focus();
+                return;
+            }
+            if ( string.IsNullOrEmpty(this.txtRemark.Text))
+            { 
+                MessageBox.Show("请填写必填项！", "警告");
+            this.txtName.Focus();
+                return;
+        }
             string url = "/Base_Books";
-            string jsonbody = "{\"Name\":\"网站5\",\"ReMark\":\"测试接口新增\"}";
+            string jsonbody = "{\"Name\":\""+ this.txtName.Text+"\",\"ReMark\":\"" + this.txtRemark.Text+ "\"}";
             Base_Book base_Book = HttpClientUtil.doPostMethodToObj<Base_Book>(url,jsonbody);
             if (base_Book.Name!= null)
             {
