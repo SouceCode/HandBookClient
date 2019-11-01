@@ -14,6 +14,16 @@ namespace HandBookClient.Basic
 {
     public partial class frmBookList : Form
     {
+
+
+        #region 分页使用
+
+        public int pageSize = 10;      //每页记录数
+        //public int recordCount = 0;    //总记录数
+        public int pageCount = 0;      //总页数
+        public int currentPage = 0;    //当前页
+        DataTable dtSource = new DataTable();
+        #endregion
         public frmBookList()
         {
             InitializeComponent();
@@ -59,12 +69,23 @@ namespace HandBookClient.Basic
         #region btnSearch_Click
         private void btnSearch_Click()
         {
+            pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
+            string sql = "select * from Base_Books";
+            string url = "/Base_Books/GetBase_BooksPageCount?sqlstr=" + sql + "&size=" + pageSize;
+            pageCount = HttpClientUtil.doGetMethodToObj<int>(url);
 
-            string url = "/Base_Books";
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > pageCount) currentPage = pageCount;
+
+            url = "/Base_Books/GetBase_BooksPageData?pageindex=" + (currentPage - 1) + "&sqlstr=" + sql + "&size=" + pageSize;
+
+            
             List<Base_Book> base_BookList = HttpClientUtil.doGetMethodToObj<List<Base_Book>>(url);
             DataTable dataTable = HttpClientUtil.toDataTable(base_BookList);
-
             this.dataGridView1.DataSource = dataTable;
+
+            this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
+            this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
         }
         #endregion
         #region btnAdd_Click
@@ -129,6 +150,33 @@ namespace HandBookClient.Basic
             this.Close();
         }
         #endregion
+
         #endregion
+
+        private void btnFirstPage_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            this.btnSearch_Click();
+
+        }
+
+        private void btnLastPage_Click(object sender, EventArgs e)
+        {
+            currentPage = pageCount;
+            this.btnSearch_Click();
+        }
+
+        private void btnPre_Click(object sender, EventArgs e)
+        {
+            currentPage--;
+            this.btnSearch_Click();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            
+            this.btnSearch_Click();
+        }
     }
 }
