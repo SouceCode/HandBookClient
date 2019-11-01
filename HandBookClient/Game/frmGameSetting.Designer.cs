@@ -37,12 +37,16 @@
             this.txtPassWord = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDeadLine = new System.Windows.Forms.Label();
+            this.dpDeadLine = new System.Windows.Forms.DateTimePicker();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(31, 77);
+            this.lblUserName.Location = new System.Drawing.Point(24, 68);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(53, 12);
             this.lblUserName.TabIndex = 0;
@@ -51,7 +55,7 @@
             // lblRemark
             // 
             this.lblRemark.AutoSize = true;
-            this.lblRemark.Location = new System.Drawing.Point(31, 203);
+            this.lblRemark.Location = new System.Drawing.Point(24, 279);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(41, 12);
             this.lblRemark.TabIndex = 1;
@@ -59,22 +63,22 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(97, 77);
+            this.txtUserName.Location = new System.Drawing.Point(90, 68);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(313, 21);
             this.txtUserName.TabIndex = 2;
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(100, 143);
+            this.txtRemark.Location = new System.Drawing.Point(93, 210);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(313, 141);
+            this.txtRemark.Size = new System.Drawing.Size(313, 150);
             this.txtRemark.TabIndex = 3;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(212, 304);
+            this.btnOK.Location = new System.Drawing.Point(205, 363);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 4;
@@ -85,7 +89,7 @@
             // lblPassWord
             // 
             this.lblPassWord.AutoSize = true;
-            this.lblPassWord.Location = new System.Drawing.Point(31, 104);
+            this.lblPassWord.Location = new System.Drawing.Point(24, 111);
             this.lblPassWord.Name = "lblPassWord";
             this.lblPassWord.Size = new System.Drawing.Size(53, 12);
             this.lblPassWord.TabIndex = 5;
@@ -93,7 +97,7 @@
             // 
             // txtPassWord
             // 
-            this.txtPassWord.Location = new System.Drawing.Point(97, 104);
+            this.txtPassWord.Location = new System.Drawing.Point(90, 111);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.Size = new System.Drawing.Size(313, 21);
             this.txtPassWord.TabIndex = 6;
@@ -101,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 43);
+            this.label2.Location = new System.Drawing.Point(24, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 12);
             this.label2.TabIndex = 7;
@@ -109,29 +113,58 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(97, 34);
+            this.txtUrl.Location = new System.Drawing.Point(90, 25);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(313, 21);
             this.txtUrl.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoScrollMinSize = new System.Drawing.Size(450, 450);
+            this.panel1.Controls.Add(this.dpDeadLine);
+            this.panel1.Controls.Add(this.lblDeadLine);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtUrl);
+            this.panel1.Controls.Add(this.lblUserName);
+            this.panel1.Controls.Add(this.lblRemark);
+            this.panel1.Controls.Add(this.txtPassWord);
+            this.panel1.Controls.Add(this.txtUserName);
+            this.panel1.Controls.Add(this.lblPassWord);
+            this.panel1.Controls.Add(this.txtRemark);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(426, 328);
+            this.panel1.TabIndex = 9;
+            // 
+            // lblDeadLine
+            // 
+            this.lblDeadLine.AutoSize = true;
+            this.lblDeadLine.Location = new System.Drawing.Point(26, 166);
+            this.lblDeadLine.Name = "lblDeadLine";
+            this.lblDeadLine.Size = new System.Drawing.Size(53, 12);
+            this.lblDeadLine.TabIndex = 9;
+            this.lblDeadLine.Text = "DeadLine";
+            // 
+            // dpDeadLine
+            // 
+            this.dpDeadLine.Location = new System.Drawing.Point(93, 156);
+            this.dpDeadLine.Name = "dpDeadLine";
+            this.dpDeadLine.Size = new System.Drawing.Size(310, 21);
+            this.dpDeadLine.TabIndex = 10;
             // 
             // frmGameSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 412);
-            this.Controls.Add(this.txtUrl);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtPassWord);
-            this.Controls.Add(this.lblPassWord);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtRemark);
-            this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.lblRemark);
-            this.Controls.Add(this.lblUserName);
             this.Name = "frmGameSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -146,5 +179,8 @@
         private System.Windows.Forms.TextBox txtPassWord;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dpDeadLine;
+        private System.Windows.Forms.Label lblDeadLine;
     }
 }

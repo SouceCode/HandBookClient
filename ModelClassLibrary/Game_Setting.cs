@@ -20,6 +20,7 @@ namespace ModelClassLibrary
         public string PassWord;
         public string ReMark;
         public DateTime CreateDate;
+        public DateTime DeadLine;
 
     }
 }

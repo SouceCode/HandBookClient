@@ -119,7 +119,7 @@ namespace HandBookClient.Game
                     game_SettingObject.PassWord = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value);
                     game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
                     game_SettingObject.CreateDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
-
+                    game_SettingObject.DeadLine= Convert.ToDateTime(dataGridView1.Rows[i].Cells[6].Value);
                     frmGameSetting f1 = new frmGameSetting(game_SettingObject);//实例化窗体
                     this.Visible = false;//设置当前窗体为不可视
                     f1.ShowDialog();//打开窗体f1

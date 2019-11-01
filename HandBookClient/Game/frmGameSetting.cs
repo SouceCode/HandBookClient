@@ -29,6 +29,7 @@ namespace HandBookClient.Game
             this.txtUserName.Text = obj.UserName;
             this.txtPassWord.Text = obj.PassWord;
             this.txtRemark.Text = obj.ReMark;
+            this.dpDeadLine.Value = Convert.ToDateTime(obj.DeadLine);
             this.Text = "修改";
 
         }
@@ -68,6 +69,7 @@ namespace HandBookClient.Game
                 game_Setting.UserName = this.txtUserName.Text;
                 game_Setting.PassWord = this.txtPassWord.Text;
                 game_Setting.ReMark = this.txtRemark.Text;
+                game_Setting.DeadLine = this.dpDeadLine.Value;
                 string jsonbody = JsonConvert.SerializeObject(game_Setting);
                 string url = "/Game_Settings/" + game_Setting.Id;
                 bool isSuccess = HttpClientUtil.doPutMethodToObj(url, jsonbody);
@@ -111,6 +113,8 @@ namespace HandBookClient.Game
                 game_SettingInput.PassWord = this.txtPassWord.Text;
                 game_SettingInput.ReMark = this.txtRemark.Text;
                 game_SettingInput.CreateDate = DateTime.Now;
+                game_SettingInput.DeadLine = this.dpDeadLine.Value;
+
                 string jsonbody = JsonConvert.SerializeObject(game_SettingInput);
 
                 //string jsonbody = "{\"Name\":\"" + this.txtUserName.Text + "\",\"ReMark\":\"" + this.txtRemark.Text + "\"}";

@@ -12,6 +12,7 @@ namespace ModelClassLibrary
         //public string Name { get; set; }
         //public string ReMark { get; set; }
         //public DateTime CreateDate { get; set; }
+
         public long Id;
         public string Name;
         public string ReMark;
