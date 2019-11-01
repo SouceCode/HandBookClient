@@ -17,11 +17,7 @@ namespace HandBookClient.Basic
         {
             InitializeComponent();
         }
-        public frmMDI(frmMain frm)
-        {
-            InitializeComponent();
-            this.frmMain = frm;
-        }
+      
 
         private void menuItemGameSetting_Click(object sender, EventArgs e)
         {
@@ -55,7 +51,7 @@ namespace HandBookClient.Basic
 
         private void frmMDI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.frmMain.Show();
+           
         }
     }
 }
