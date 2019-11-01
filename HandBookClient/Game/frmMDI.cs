@@ -25,7 +25,7 @@ namespace HandBookClient.Game
 
         private void menuItemGameSetting_Click(object sender, EventArgs e)
         {
-            if (IsExistMDI("frmGameSetting")) { return; }   //防止重复打开窗体，新增如下代码
+            if (IsExistMDI("frmGameSettingList")) { return; }   //防止重复打开窗体，新增如下代码
             Game.frmGameSettingList frmGameSetting = new Game.frmGameSettingList();
             frmGameSetting.MdiParent = this;
             frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
@@ -55,7 +55,6 @@ namespace HandBookClient.Game
 
         private void frmMDI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.frmMain.Show();
         }
     }
 }
