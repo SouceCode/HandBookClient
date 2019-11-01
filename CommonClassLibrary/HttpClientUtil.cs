@@ -20,7 +20,16 @@ namespace CommonClassLibrary
 
         //private static string xiazhi_tomcat_url = Properties.Settings.Default.xiazhi_server_url;
         //private static string xiazhi_server_url = xiazhi_tomcat_url + "resteasy";
+
+#if DEBUG
+        //开发环境（测试）
         private static string xiazhi_tomcat_url = "http://localhost:5000/";
+
+#else
+                    //生产环境
+        private static string xiazhi_tomcat_url = "http://X.X.X.X:5000/";
+
+#endif
         private static string xiazhi_server_url = xiazhi_tomcat_url + "Api";
         // REST @GET 方法，根据泛型自动转换成实体，支持List<T>
         public static T doGetMethodToObj<T>(string metodUrl)
@@ -175,6 +184,10 @@ namespace CommonClassLibrary
         public static DataTable toDataTable(IList list)
         {
             DataTable result = new DataTable();
+            if (list!=null)
+            {
+
+           
             if (list.Count > 0)
             {
                 FieldInfo[] fieldInfos = list[0].GetType().GetFields();
@@ -246,6 +259,7 @@ namespace CommonClassLibrary
                     result.TableName = list[0].GetType().Name;
                     result.LoadDataRow(array, true);
                 }
+            }
             }
             return result;
         }

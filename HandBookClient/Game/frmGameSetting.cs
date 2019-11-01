@@ -35,8 +35,9 @@ namespace HandBookClient.Game
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
-            if (game_Setting.Id >0)
+            try
+            {
+                if (game_Setting.Id >0)
             {//编辑
                 if (string.IsNullOrEmpty(this.txtUrl.Text))
                 {
@@ -119,8 +120,13 @@ namespace HandBookClient.Game
                     MessageBox.Show("添加成功！", "信息");
                 }
             }
+            }
 
-            
+            catch (Exception ex1)
+            {
+                MessageBox.Show(ex1.Message);
+            }
+
         }
     }
 }

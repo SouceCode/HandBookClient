@@ -17,7 +17,6 @@ namespace HandBookClient.Game
         public frmGameSettingList()
         {
             InitializeComponent();
-            this.btnSearch_Click();
         }
         /// <summary>
         /// 按钮单击触发

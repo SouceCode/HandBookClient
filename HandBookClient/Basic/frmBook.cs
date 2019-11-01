@@ -33,7 +33,7 @@ namespace HandBookClient.Basic
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            try { 
             if (base_book.Id >0)
             {//编辑
                 if (string.IsNullOrEmpty(this.txtName.Text))
@@ -82,7 +82,12 @@ namespace HandBookClient.Basic
                 }
             }
 
-            
         }
+
+            catch (Exception ex1)
+            {
+                MessageBox.Show(ex1.Message);
+            }
+}
     }
 }
