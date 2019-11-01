@@ -77,7 +77,7 @@
             this.toolBar1.Location = new System.Drawing.Point(0, 0);
             this.toolBar1.Name = "toolBar1";
             this.toolBar1.ShowToolTips = true;
-            this.toolBar1.Size = new System.Drawing.Size(524, 41);
+            this.toolBar1.Size = new System.Drawing.Size(667, 41);
             this.toolBar1.TabIndex = 0;
             this.toolBar1.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar1_ButtonClick);
             // 
@@ -116,7 +116,7 @@
             this.grbFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.grbFilter.Location = new System.Drawing.Point(0, 41);
             this.grbFilter.Name = "grbFilter";
-            this.grbFilter.Size = new System.Drawing.Size(524, 85);
+            this.grbFilter.Size = new System.Drawing.Size(667, 85);
             this.grbFilter.TabIndex = 1;
             this.grbFilter.TabStop = false;
             this.grbFilter.Text = "查询条件";
@@ -124,10 +124,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 179);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 126);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(524, 195);
+            this.dataGridView1.Size = new System.Drawing.Size(667, 320);
             this.dataGridView1.TabIndex = 2;
             // 
             // panel1
@@ -138,9 +139,9 @@
             this.panel1.Controls.Add(this.btnFirstPage);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 356);
+            this.panel1.Location = new System.Drawing.Point(0, 395);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(524, 51);
+            this.panel1.Size = new System.Drawing.Size(667, 51);
             this.panel1.TabIndex = 3;
             // 
             // toolStrip1
@@ -153,7 +154,7 @@
             this.toolStripcbPageSize});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(524, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(667, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -231,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 407);
+            this.ClientSize = new System.Drawing.Size(667, 446);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grbFilter);

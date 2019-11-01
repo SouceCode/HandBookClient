@@ -148,6 +148,8 @@
             // 
             // dpDeadLine
             // 
+            this.dpDeadLine.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dpDeadLine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dpDeadLine.Location = new System.Drawing.Point(93, 156);
             this.dpDeadLine.Name = "dpDeadLine";
             this.dpDeadLine.Size = new System.Drawing.Size(310, 21);

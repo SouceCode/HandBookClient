@@ -29,7 +29,16 @@ namespace HandBookClient.Game
             this.txtUserName.Text = obj.UserName;
             this.txtPassWord.Text = obj.PassWord;
             this.txtRemark.Text = obj.ReMark;
-            this.dpDeadLine.Value = Convert.ToDateTime(obj.DeadLine);
+
+
+            //超出控件的范围处理
+            if (obj.DeadLine < DateTimePicker.MinimumDateTime || obj.DeadLine > DateTimePicker.MaximumDateTime)
+            {
+
+            }
+            else {
+                this.dpDeadLine.Value = obj.DeadLine;
+            }
             this.Text = "修改";
 
         }
