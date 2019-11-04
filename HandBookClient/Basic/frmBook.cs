@@ -56,7 +56,8 @@ namespace HandBookClient.Basic
                 if (isSuccess)
                 {
                     MessageBox.Show("修改成功！", "信息");
-                }
+                        ClearControl();
+                    }
 
 
             }
@@ -79,7 +80,8 @@ namespace HandBookClient.Basic
                 if (base_Book.Name != null)
                 {
                     MessageBox.Show("添加成功！", "信息");
-                }
+                        ClearControl();
+                    }
             }
 
         }
@@ -89,5 +91,10 @@ namespace HandBookClient.Basic
                 MessageBox.Show(ex1.Message);
             }
 }
+        private void ClearControl()
+        {
+            this.txtName.Text = string.Empty;
+            this.txtRemark.Text = string.Empty;
+        }
     }
 }

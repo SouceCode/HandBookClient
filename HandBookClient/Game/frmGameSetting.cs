@@ -85,6 +85,7 @@ namespace HandBookClient.Game
                 if (isSuccess)
                 {
                     MessageBox.Show("修改成功！", "信息");
+                        ClearControl();
                 }
 
 
@@ -131,6 +132,7 @@ namespace HandBookClient.Game
                 if (game_Setting.UserName != null)
                 {
                     MessageBox.Show("添加成功！", "信息");
+                        ClearControl();
                 }
             }
             }
@@ -140,6 +142,12 @@ namespace HandBookClient.Game
                 MessageBox.Show(ex1.Message);
             }
 
+        }
+        private void ClearControl() {
+            this.txtUrl.Text = string.Empty;
+            this.txtUserName.Text = string.Empty;
+            this.txtPassWord.Text = string.Empty;
+            this.txtRemark.Text = string.Empty;
         }
     }
 }
