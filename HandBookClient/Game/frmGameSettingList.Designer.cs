@@ -40,14 +40,14 @@
             this.grbFilter = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnFirstPage = new System.Windows.Forms.Button();
-            this.btnLastPage = new System.Windows.Forms.Button();
-            this.btnPre = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.btnLastPage = new System.Windows.Forms.Button();
+            this.btnFirstPage = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -144,6 +144,46 @@
             this.panel1.Size = new System.Drawing.Size(667, 51);
             this.panel1.TabIndex = 3;
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(211, 0);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 4;
+            this.btnNext.Text = "下一页";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPre
+            // 
+            this.btnPre.Location = new System.Drawing.Point(139, 0);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(75, 23);
+            this.btnPre.TabIndex = 3;
+            this.btnPre.Text = "上一页";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // btnLastPage
+            // 
+            this.btnLastPage.Location = new System.Drawing.Point(69, 0);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(75, 23);
+            this.btnLastPage.TabIndex = 2;
+            this.btnLastPage.Text = "最后一页";
+            this.btnLastPage.UseVisualStyleBackColor = true;
+            this.btnLastPage.Click += new System.EventHandler(this.btnLastPage_Click);
+            // 
+            // btnFirstPage
+            // 
+            this.btnFirstPage.Location = new System.Drawing.Point(0, 0);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(75, 23);
+            this.btnFirstPage.TabIndex = 1;
+            this.btnFirstPage.Text = "第一页";
+            this.btnFirstPage.UseVisualStyleBackColor = true;
+            this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -158,62 +198,22 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnFirstPage
-            // 
-            this.btnFirstPage.Location = new System.Drawing.Point(0, 0);
-            this.btnFirstPage.Name = "btnFirstPage";
-            this.btnFirstPage.Size = new System.Drawing.Size(75, 23);
-            this.btnFirstPage.TabIndex = 1;
-            this.btnFirstPage.Text = "第一页";
-            this.btnFirstPage.UseVisualStyleBackColor = true;
-            this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
-            // 
-            // btnLastPage
-            // 
-            this.btnLastPage.Location = new System.Drawing.Point(69, 0);
-            this.btnLastPage.Name = "btnLastPage";
-            this.btnLastPage.Size = new System.Drawing.Size(75, 23);
-            this.btnLastPage.TabIndex = 2;
-            this.btnLastPage.Text = "最后一页";
-            this.btnLastPage.UseVisualStyleBackColor = true;
-            this.btnLastPage.Click += new System.EventHandler(this.btnLastPage_Click);
-            // 
-            // btnPre
-            // 
-            this.btnPre.Location = new System.Drawing.Point(139, 0);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(75, 23);
-            this.btnPre.TabIndex = 3;
-            this.btnPre.Text = "上一页";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(211, 0);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 4;
-            this.btnNext.Text = "下一页";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(44, 22);
             this.toolStripLabel1.Text = "当前页";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(44, 22);
             this.toolStripLabel2.Text = "总页数";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripcbPageSize
             // 
@@ -226,7 +226,7 @@
             "100"});
             this.toolStripcbPageSize.Name = "toolStripcbPageSize";
             this.toolStripcbPageSize.Size = new System.Drawing.Size(121, 25);
-            this.toolStripcbPageSize.Text = "2";
+            this.toolStripcbPageSize.Text = "20";
             // 
             // frmGameSettingList
             // 
