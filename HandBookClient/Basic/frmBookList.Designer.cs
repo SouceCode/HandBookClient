@@ -49,6 +49,10 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             this.btnFirstPage = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.grbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -113,6 +117,9 @@
             // 
             // grbFilter
             // 
+            this.grbFilter.Controls.Add(this.btnReset);
+            this.grbFilter.Controls.Add(this.txtName);
+            this.grbFilter.Controls.Add(this.lblName);
             this.grbFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.grbFilter.Location = new System.Drawing.Point(0, 41);
             this.grbFilter.Name = "grbFilter";
@@ -228,6 +235,32 @@
             this.btnFirstPage.UseVisualStyleBackColor = true;
             this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(13, 21);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(29, 12);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(49, 21);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(189, 21);
+            this.txtName.TabIndex = 1;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(449, 18);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "重置条件";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // frmBookList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -239,6 +272,8 @@
             this.Controls.Add(this.toolBar1);
             this.Name = "frmBookList";
             this.Text = "号码簿配置";
+            this.grbFilter.ResumeLayout(false);
+            this.grbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -270,5 +305,8 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.Button btnFirstPage;
         private System.Windows.Forms.ToolStripComboBox toolStripcbPageSize;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
     }
 }

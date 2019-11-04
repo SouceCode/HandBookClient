@@ -49,6 +49,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
+            this.lblUrl = new System.Windows.Forms.Label();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.grbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -113,6 +117,9 @@
             // 
             // grbFilter
             // 
+            this.grbFilter.Controls.Add(this.btnReset);
+            this.grbFilter.Controls.Add(this.txtUrl);
+            this.grbFilter.Controls.Add(this.lblUrl);
             this.grbFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.grbFilter.Location = new System.Drawing.Point(0, 41);
             this.grbFilter.Name = "grbFilter";
@@ -228,6 +235,32 @@
             this.toolStripcbPageSize.Size = new System.Drawing.Size(121, 25);
             this.toolStripcbPageSize.Text = "20";
             // 
+            // lblUrl
+            // 
+            this.lblUrl.AutoSize = true;
+            this.lblUrl.Location = new System.Drawing.Point(13, 21);
+            this.lblUrl.Name = "lblUrl";
+            this.lblUrl.Size = new System.Drawing.Size(23, 12);
+            this.lblUrl.TabIndex = 0;
+            this.lblUrl.Text = "Url";
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(56, 18);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(458, 21);
+            this.txtUrl.TabIndex = 1;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(586, 16);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "重置条件";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // frmGameSettingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -239,6 +272,8 @@
             this.Controls.Add(this.toolBar1);
             this.Name = "frmGameSettingList";
             this.Text = "游戏试玩配置";
+            this.grbFilter.ResumeLayout(false);
+            this.grbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -270,5 +305,8 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox toolStripcbPageSize;
+        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Label lblUrl;
+        private System.Windows.Forms.Button btnReset;
     }
 }

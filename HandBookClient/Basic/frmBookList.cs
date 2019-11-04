@@ -70,7 +70,13 @@ namespace HandBookClient.Basic
         private void btnSearch_Click()
         {
             pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
-            string sql = "select * from Base_Books";
+            string sql = "select * from Base_Books bb";
+            string wherestr = " where 1=1 ";
+            if (!string.IsNullOrEmpty(this.txtName.Text))
+            {
+                wherestr += " AND bb.Name='" + this.txtName.Text + "' ";
+            }
+            sql += wherestr;
             string url = "/Base_Books/GetBase_BooksPageCount?sqlstr=" + sql + "&size=" + pageSize;
             pageCount = HttpClientUtil.doGetMethodToObj<int>(url);
 
@@ -177,6 +183,11 @@ namespace HandBookClient.Basic
             currentPage++;
             
             this.btnSearch_Click();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            this.txtName.Text = string.Empty;
         }
     }
 }

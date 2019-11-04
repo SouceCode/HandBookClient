@@ -72,7 +72,13 @@ namespace HandBookClient.Game
         {
 
             pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
-            string sql = "select * from Game_Settings";
+            string sql = "select * from Game_Settings gs";
+            string wherestr = " where 1=1 ";
+            if (!string.IsNullOrEmpty(this.txtUrl.Text))
+            {
+                wherestr += " AND gs.Url='" + this.txtUrl.Text+"' ";
+            }
+            sql += wherestr;
             string url = "/Game_Settings/GetGame_SettingsPageCount?sqlstr=" + sql + "&size=" + pageSize;
             pageCount = HttpClientUtil.doGetMethodToObj<int>(url);
 
@@ -181,6 +187,11 @@ namespace HandBookClient.Game
         {
             currentPage++;
             this.btnSearch_Click();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            this.txtUrl.Text = string.Empty;
         }
     }
 }
