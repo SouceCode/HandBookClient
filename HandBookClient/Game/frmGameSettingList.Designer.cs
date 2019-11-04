@@ -274,6 +274,7 @@
             this.Controls.Add(this.toolBar1);
             this.Name = "frmGameSettingList";
             this.Text = "游戏试玩配置";
+            this.Load += new System.EventHandler(this.frmGameSettingList_Load);
             this.grbFilter.ResumeLayout(false);
             this.grbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

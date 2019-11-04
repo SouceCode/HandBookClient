@@ -274,6 +274,7 @@
             this.Controls.Add(this.toolBar1);
             this.Name = "frmBookList";
             this.Text = "号码簿配置";
+            this.Load += new System.EventHandler(this.frmBookList_Load);
             this.grbFilter.ResumeLayout(false);
             this.grbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
