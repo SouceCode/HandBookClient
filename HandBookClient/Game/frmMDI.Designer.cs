@@ -55,7 +55,7 @@
             // menuItemTryGameSetting
             // 
             this.menuItemTryGameSetting.Name = "menuItemTryGameSetting";
-            this.menuItemTryGameSetting.Size = new System.Drawing.Size(152, 22);
+            this.menuItemTryGameSetting.Size = new System.Drawing.Size(100, 22);
             this.menuItemTryGameSetting.Text = "配置";
             this.menuItemTryGameSetting.Click += new System.EventHandler(this.menuItemGameSetting_Click);
             // 
@@ -71,6 +71,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "游戏";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMDI_FormClosed);
+            this.Load += new System.EventHandler(this.frmMDI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

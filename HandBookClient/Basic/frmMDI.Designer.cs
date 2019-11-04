@@ -55,7 +55,7 @@
             // menuItemBookSetting
             // 
             this.menuItemBookSetting.Name = "menuItemBookSetting";
-            this.menuItemBookSetting.Size = new System.Drawing.Size(152, 22);
+            this.menuItemBookSetting.Size = new System.Drawing.Size(100, 22);
             this.menuItemBookSetting.Text = "配置";
             this.menuItemBookSetting.Click += new System.EventHandler(this.menuItemGameSetting_Click);
             // 
@@ -71,6 +71,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "基础配置";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMDI_FormClosed);
+            this.Load += new System.EventHandler(this.frmMDI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

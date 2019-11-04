@@ -13,6 +13,7 @@ namespace HandBookClient.Basic
     public partial class frmMDI : Form
     {
         frmMain frmMain = new frmMain();
+        frmBookList frmChild = new frmBookList();  //菜单树窗口
         public frmMDI()
         {
             InitializeComponent();
@@ -52,6 +53,14 @@ namespace HandBookClient.Basic
         private void frmMDI_FormClosed(object sender, FormClosedEventArgs e)
         {
            
+        }
+
+        private void frmMDI_Load(object sender, EventArgs e)
+        {
+            //在主窗口打开的时候，就打开子窗口
+            frmChild.MdiParent = this;
+            frmChild.Location = new Point(0, 0);//显示位置
+            frmChild.Show();
         }
     }
 }
