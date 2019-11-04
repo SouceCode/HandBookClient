@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelClassLibrary.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace ModelClassLibrary
         //public string PassWord { get; set; }
         //public string ReMark { get; set; }
         //public DateTime CreateDate { get; set; }
+        //public TryTypeEnum TryType { get; set; }
+
         public long Id;
         public string Url;
         public string UserName;
@@ -21,6 +24,7 @@ namespace ModelClassLibrary
         public string ReMark;
         public DateTime CreateDate;
         public DateTime DeadLine;
+        public TryTypeEnum TryType;
 
     }
 }

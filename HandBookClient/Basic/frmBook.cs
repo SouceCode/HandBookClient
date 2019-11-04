@@ -18,12 +18,14 @@ namespace HandBookClient.Basic
         public frmBook()
         {
             InitializeComponent();
+            Init();
             this.Text = "新增";
         }
         Base_Book base_book = new Base_Book();
         public frmBook(Base_Book obj)
         {
             InitializeComponent();
+            Init();
             this.base_book = obj;
             this.txtName.Text = obj.Name;
             this.txtRemark.Text = obj.ReMark;
@@ -95,6 +97,15 @@ namespace HandBookClient.Basic
         {
             this.txtName.Text = string.Empty;
             this.txtRemark.Text = string.Empty;
+        }
+        private void Init()
+        {
+
+        }
+
+        private void frmBook_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

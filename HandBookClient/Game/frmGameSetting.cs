@@ -1,5 +1,6 @@
 ﻿using CommonClassLibrary;
 using ModelClassLibrary;
+using ModelClassLibrary.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,20 @@ namespace HandBookClient.Game
         public frmGameSetting()
         {
             InitializeComponent();
+            Init();
             this.Text = "新增";
         }
         Game_Setting game_Setting = new Game_Setting();
         public frmGameSetting(Game_Setting obj)
         {
             InitializeComponent();
+            Init();
             this.game_Setting = obj;
             this.txtUrl.Text = obj.Url;
             this.txtUserName.Text = obj.UserName;
             this.txtPassWord.Text = obj.PassWord;
             this.txtRemark.Text = obj.ReMark;
+            this.cbTryType.SelectedIndex = this.cbTryType.FindString(obj.TryType.ToString());
 
 
             //超出控件的范围处理
@@ -79,6 +83,7 @@ namespace HandBookClient.Game
                 game_Setting.PassWord = this.txtPassWord.Text;
                 game_Setting.ReMark = this.txtRemark.Text;
                 game_Setting.DeadLine = this.dpDeadLine.Value;
+                game_Setting.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
                 string jsonbody = JsonConvert.SerializeObject(game_Setting);
                 string url = "/Game_Settings/" + game_Setting.Id;
                 bool isSuccess = HttpClientUtil.doPutMethodToObj(url, jsonbody);
@@ -124,6 +129,7 @@ namespace HandBookClient.Game
                 game_SettingInput.ReMark = this.txtRemark.Text;
                 game_SettingInput.CreateDate = DateTime.Now;
                 game_SettingInput.DeadLine = this.dpDeadLine.Value;
+                game_SettingInput.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
 
                 string jsonbody = JsonConvert.SerializeObject(game_SettingInput);
 
@@ -148,6 +154,14 @@ namespace HandBookClient.Game
             this.txtUserName.Text = string.Empty;
             this.txtPassWord.Text = string.Empty;
             this.txtRemark.Text = string.Empty;
+        }
+
+        private void frmGameSetting_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void Init() {
+            this.cbTryType.DataSource = System.Enum.GetNames(typeof(TryTypeEnum));
         }
     }
 }

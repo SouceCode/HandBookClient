@@ -1,5 +1,6 @@
 ﻿using CommonClassLibrary;
 using ModelClassLibrary;
+using ModelClassLibrary.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,6 +127,7 @@ namespace HandBookClient.Game
                     game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
                     game_SettingObject.CreateDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
                     game_SettingObject.DeadLine= Convert.ToDateTime(dataGridView1.Rows[i].Cells[6].Value);
+                    game_SettingObject.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), dataGridView1.Rows[i].Cells[7].Value.ToString(), false); 
                     frmGameSetting f1 = new frmGameSetting(game_SettingObject);//实例化窗体
                     this.Visible = false;//设置当前窗体为不可视
                     f1.ShowDialog();//打开窗体f1
@@ -196,18 +198,24 @@ namespace HandBookClient.Game
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            //更改dataGridView1行背景色 条件格式  重绘painting
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-
+            try
             {
-                
-                string deadLine = this.dataGridView1.Rows[e.RowIndex].Cells["DeadLine"].Value.ToString();
-                if (deadLine.Trim().Length!=0&&Convert.ToDateTime(deadLine).AddDays(-14)<DateTime.Now)
-                {
-                    this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-                    this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                //更改dataGridView1行背景色 条件格式  重绘painting
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
 
+                {
+
+                    string deadLine = this.dataGridView1.Rows[e.RowIndex].Cells["DeadLine"].Value.ToString();
+                    if (deadLine.Trim().Length != 0 && Convert.ToDateTime(deadLine).AddDays(-14) < DateTime.Now)
+                    {
+                        this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                        this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+
+                    }
                 }
+            }
+            catch(Exception ex) {
+                Console.Write(ex);
             }
         }
         /// <summary>

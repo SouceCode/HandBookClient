@@ -78,7 +78,7 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // frmGameSetting
+            // frmBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -88,8 +88,9 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblRemark);
             this.Controls.Add(this.lblName);
-            this.Name = "frmGameSetting";
+            this.Name = "frmBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.frmBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

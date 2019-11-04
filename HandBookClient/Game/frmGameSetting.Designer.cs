@@ -38,8 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDeadLine = new System.Windows.Forms.Label();
             this.dpDeadLine = new System.Windows.Forms.DateTimePicker();
+            this.lblDeadLine = new System.Windows.Forms.Label();
+            this.lblTryType = new System.Windows.Forms.Label();
+            this.cbTryType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             // lblRemark
             // 
             this.lblRemark.AutoSize = true;
-            this.lblRemark.Location = new System.Drawing.Point(24, 279);
+            this.lblRemark.Location = new System.Drawing.Point(21, 343);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(41, 12);
             this.lblRemark.TabIndex = 1;
@@ -70,7 +72,7 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(93, 210);
+            this.txtRemark.Location = new System.Drawing.Point(90, 274);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(313, 150);
@@ -122,6 +124,8 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(450, 450);
+            this.panel1.Controls.Add(this.cbTryType);
+            this.panel1.Controls.Add(this.lblTryType);
             this.panel1.Controls.Add(this.dpDeadLine);
             this.panel1.Controls.Add(this.lblDeadLine);
             this.panel1.Controls.Add(this.label2);
@@ -137,6 +141,15 @@
             this.panel1.Size = new System.Drawing.Size(426, 328);
             this.panel1.TabIndex = 9;
             // 
+            // dpDeadLine
+            // 
+            this.dpDeadLine.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dpDeadLine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpDeadLine.Location = new System.Drawing.Point(93, 156);
+            this.dpDeadLine.Name = "dpDeadLine";
+            this.dpDeadLine.Size = new System.Drawing.Size(310, 21);
+            this.dpDeadLine.TabIndex = 10;
+            // 
             // lblDeadLine
             // 
             this.lblDeadLine.AutoSize = true;
@@ -146,14 +159,22 @@
             this.lblDeadLine.TabIndex = 9;
             this.lblDeadLine.Text = "DeadLine";
             // 
-            // dpDeadLine
+            // lblTryType
             // 
-            this.dpDeadLine.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dpDeadLine.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpDeadLine.Location = new System.Drawing.Point(93, 156);
-            this.dpDeadLine.Name = "dpDeadLine";
-            this.dpDeadLine.Size = new System.Drawing.Size(310, 21);
-            this.dpDeadLine.TabIndex = 10;
+            this.lblTryType.AutoSize = true;
+            this.lblTryType.Location = new System.Drawing.Point(28, 218);
+            this.lblTryType.Name = "lblTryType";
+            this.lblTryType.Size = new System.Drawing.Size(47, 12);
+            this.lblTryType.TabIndex = 11;
+            this.lblTryType.Text = "TryType";
+            // 
+            // cbTryType
+            // 
+            this.cbTryType.FormattingEnabled = true;
+            this.cbTryType.Location = new System.Drawing.Point(90, 218);
+            this.cbTryType.Name = "cbTryType";
+            this.cbTryType.Size = new System.Drawing.Size(313, 20);
+            this.cbTryType.TabIndex = 12;
             // 
             // frmGameSetting
             // 
@@ -164,6 +185,7 @@
             this.Controls.Add(this.btnOK);
             this.Name = "frmGameSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.frmGameSetting_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -184,5 +206,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dpDeadLine;
         private System.Windows.Forms.Label lblDeadLine;
+        private System.Windows.Forms.ComboBox cbTryType;
+        private System.Windows.Forms.Label lblTryType;
     }
 }
