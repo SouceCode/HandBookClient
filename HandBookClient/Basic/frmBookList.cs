@@ -87,11 +87,14 @@ namespace HandBookClient.Basic
 
             
             List<Base_Book> base_BookList = HttpClientUtil.doGetMethodToObj<List<Base_Book>>(url);
-            DataTable dataTable = HttpClientUtil.toDataTable(base_BookList);
-            this.dataGridView1.DataSource = dataTable;
-            AutoSizeColumn(this.dataGridView1);
-            this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
-            this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
+            if (base_BookList != null)
+            {
+                DataTable dataTable = HttpClientUtil.toDataTable(base_BookList);
+                this.dataGridView1.DataSource = dataTable;
+                AutoSizeColumn(this.dataGridView1);
+                this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
+                this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
+            }
         }
         #endregion
         #region btnAdd_Click

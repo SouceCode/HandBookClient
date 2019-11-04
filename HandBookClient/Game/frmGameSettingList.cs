@@ -89,13 +89,17 @@ namespace HandBookClient.Game
             url = "/Game_Settings/GetGame_SettingsPageData?pageindex="+(currentPage-1)+"&sqlstr="+ sql + "&size="+ pageSize;
            
             List<Game_Setting> game_SettingList = HttpClientUtil.doGetMethodToObj<List<Game_Setting>>(url);
-            DataTable dataTable = HttpClientUtil.toDataTable(game_SettingList);
-            this.dataGridView1.DataSource = dataTable;
-            AutoSizeColumn(this.dataGridView1);
+            if (game_SettingList!=null)
+            {
+                DataTable dataTable = HttpClientUtil.toDataTable(game_SettingList);
+                this.dataGridView1.DataSource = dataTable;
+                AutoSizeColumn(this.dataGridView1);
 
 
-            this.toolStripLabel1.Text = "当前页"+currentPage.ToString();//当前页
-            this.toolStripLabel2.Text ="总页数"+ pageCount.ToString();//总页数
+                this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
+                this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
+            }
+           
          
         }
         #endregion

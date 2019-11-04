@@ -79,11 +79,16 @@ namespace HandBookClient.Basic
                 string url = "/Base_Books";
                 string jsonbody = "{\"Name\":\"" + this.txtName.Text + "\",\"ReMark\":\"" + this.txtRemark.Text + "\"}";
                 Base_Book base_Book = HttpClientUtil.doPostMethodToObj<Base_Book>(url, jsonbody);
-                if (base_Book.Name != null)
-                {
-                    MessageBox.Show("添加成功！", "信息");
+                    if (base_Book != null && base_Book.Name != null)
+                    {
+                        MessageBox.Show("添加成功！", "信息");
                         ClearControl();
                     }
+                    else {
+                        MessageBox.Show("添加失败！", "信息");
+
+                    }
+
             }
 
         }

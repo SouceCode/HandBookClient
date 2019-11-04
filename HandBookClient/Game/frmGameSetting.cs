@@ -135,11 +135,14 @@ namespace HandBookClient.Game
 
                 //string jsonbody = "{\"Name\":\"" + this.txtUserName.Text + "\",\"ReMark\":\"" + this.txtRemark.Text + "\"}";
                 Game_Setting game_Setting = HttpClientUtil.doPostMethodToObj<Game_Setting>(url, jsonbody);
-                if (game_Setting.UserName != null)
-                {
-                    MessageBox.Show("添加成功！", "信息");
+                    if (game_Setting != null && game_Setting.UserName != null)
+                    {
+                        MessageBox.Show("添加成功！", "信息");
                         ClearControl();
-                }
+                    }
+                    else {
+                        MessageBox.Show("添加失败！", "信息");
+                    }
             }
             }
 
