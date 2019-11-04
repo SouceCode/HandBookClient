@@ -193,5 +193,22 @@ namespace HandBookClient.Game
         {
             this.txtUrl.Text = string.Empty;
         }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //更改dataGridView1行背景色 条件格式  重绘painting
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+
+            {
+                
+                string deadLine = this.dataGridView1.Rows[e.RowIndex].Cells["DeadLine"].Value.ToString();
+                if (deadLine.Trim().Length!=0&&Convert.ToDateTime(deadLine).AddDays(-14)<DateTime.Now)
+                {
+                    this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    this.dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+
+                }
+            }
+        }
     }
 }

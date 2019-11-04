@@ -189,5 +189,10 @@ namespace HandBookClient.Basic
         {
             this.txtName.Text = string.Empty;
         }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
+        }
     }
 }
