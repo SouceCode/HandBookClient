@@ -245,5 +245,11 @@ namespace HandBookClient.Game
         {
             
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //直接调用修改按钮
+            btnEdit_Click();
+        }
     }
 }
