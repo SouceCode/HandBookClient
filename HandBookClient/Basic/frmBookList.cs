@@ -91,7 +91,7 @@ namespace HandBookClient.Basic
             {
                 DataTable dataTable = HttpClientUtil.toDataTable(base_BookList);
                 this.dataGridView1.DataSource = dataTable;
-                AutoSizeColumn(this.dataGridView1);
+                //AutoSizeColumn(this.dataGridView1);
                 this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
                 this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
             }
