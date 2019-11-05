@@ -25,38 +25,67 @@ namespace CommonClassLibrary
         //开发环境（测试）
         private static string xiazhi_tomcat_url = "http://localhost:5000/";
 
+
 #else
         //生产环境
-      
+        private static string xiazhi_tomcat_url = "http://192.168.1.107:5000/";
 
 #endif
         private static string xiazhi_server_url = xiazhi_tomcat_url + "Api";
         // REST @GET 方法，根据泛型自动转换成实体，支持List<T>
         public static T doGetMethodToObj<T>(string metodUrl)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+            HttpWebResponse response = null;
+            try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "get";
-                request.ContentType = "application/json;charset=UTF-8";
-                HttpWebResponse response = null;
-
-                try
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
                 {
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "get";
+                    request.ContentType = "application/json;charset=UTF-8";
+                 
 
-                    response = (HttpWebResponse)request.GetResponse();
+                    //try
+                    //{
+
+                        response = (HttpWebResponse)request.GetResponse();
+                    //}
+                    //catch (WebException e)
+                    //{
+                    //    response = (HttpWebResponse)e.Response;
+                    //    //MessageBox.Show(e.Message + " - " + getRestErrorMessage(response));
+                    //    return default(T);
+                    //}
+                    string json = getResponseString(response);
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
-                catch (WebException e)
+                else
                 {
-                    response = (HttpWebResponse)e.Response;
-                    //MessageBox.Show(e.Message + " - " + getRestErrorMessage(response));
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
                     return default(T);
                 }
-                string json = getResponseString(response);
-                return JsonConvert.DeserializeObject<T>(json);
-            } else {
+            }
+            catch {
+                if (response != null)
+                {
+                    response.Close();
+                }
                 return default(T);
-            };
+            }
+            finally {
+                if (response != null)
+                {
+                    response.Close();
+                }
+
+            }
         }
 
         // 将 HttpWebResponse 返回结果转换成 string
@@ -83,115 +112,266 @@ namespace CommonClassLibrary
         // REST @POST 方法
         public static T doPostMethodToObj<T>(string metodUrl, string jsonBody)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+            HttpWebResponse response = null;
+            Stream stream = null;
+            try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "post";
-                request.ContentType = "application/json;charset=UTF-8";
-                var stream = request.GetRequestStream();
-                using (var writer = new StreamWriter(stream))
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
                 {
-                    writer.Write(jsonBody);
-                    writer.Flush();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "post";
+                    request.ContentType = "application/json;charset=UTF-8";
+                    stream = request.GetRequestStream();
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        writer.Write(jsonBody);
+                        writer.Flush();
+                    }
+                    stream.Close();
+                     response = (HttpWebResponse)request.GetResponse();
+                    string json = getResponseString(response);
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                string json = getResponseString(response);
-                return JsonConvert.DeserializeObject<T>(json);
-            } else { return default(T); }
+                else {
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return default(T); }
+            }
+            catch { throw; }
+            finally {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+                if (response != null)
+                {
+                    response.Close();
+                }
+            }
         }
 
         // REST @PUT 方法
         public static string doPutMethod(string metodUrl)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+            HttpWebResponse response = null;
+            try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "put";
-                request.ContentType = "application/json;charset=UTF-8";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("UTF-8")))
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
                 {
-                    return reader.ReadToEnd();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "put";
+                    request.ContentType = "application/json;charset=UTF-8";
+                     response = (HttpWebResponse)request.GetResponse();
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("UTF-8")))
+                    {
+                        if (response != null)
+                        {
+                            response.Close();
+                        }
+                        return reader.ReadToEnd();
+                    }
                 }
-            } else {
-                return string.Empty;
+                else
+                {
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return string.Empty;
+                }
+            }
+            catch { throw; }
+            finally {
+                if (response != null)
+                {
+                    response.Close();
+                }
             }
         }
 
         // REST @PUT 方法，带发送内容主体
         public static T doPutMethodToObj<T>(string metodUrl, string jsonBody)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+            HttpWebResponse response = null;
+            Stream stream = null;
+            try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "put";
-                request.ContentType = "application/json;charset=UTF-8";
-                var stream = request.GetRequestStream();
-                using (var writer = new StreamWriter(stream))
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
                 {
-                    writer.Write(jsonBody);
-                    writer.Flush();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "put";
+                    request.ContentType = "application/json;charset=UTF-8";
+                     stream = request.GetRequestStream();
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        writer.Write(jsonBody);
+                        writer.Flush();
+                    }
+                    stream.Close();
+                    response = (HttpWebResponse)request.GetResponse();
+                    string json = getResponseString(response);
+                   
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                string json = getResponseString(response);
-                return JsonConvert.DeserializeObject<T>(json);
+                else
+                {
+                   
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return default(T);
+                }
             }
-            else {
-                return default(T);
+            catch
+            {
+                throw;
+            }
+            finally {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+                if (response != null)
+                {
+                    response.Close();
+                }
             }
         }
 
         // REST @PUT 方法，带发送内容主体
         public static bool doPutMethodToObj(string metodUrl, string jsonBody)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+
+            HttpWebResponse response = null;
+            Stream stream = null;
+            try
             {
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                {
 
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "put";
-                request.ContentType = "application/json;charset=UTF-8";
-                var stream = request.GetRequestStream();
-                using (var writer = new StreamWriter(stream))
-                {
-                    writer.Write(jsonBody);
-                    writer.Flush();
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "put";
+                    request.ContentType = "application/json;charset=UTF-8";
+                     stream = request.GetRequestStream();
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        writer.Write(jsonBody);
+                        writer.Flush();
+                    }
+                    stream.Close();
+                    response = (HttpWebResponse)request.GetResponse();
+                    if (response.StatusCode == HttpStatusCode.NoContent)
+                    {
+                        if (stream != null)
+                        {
+                            stream.Close();
+                        }
+                        if (response != null)
+                        {
+                            response.Close();
+                        }
+                        return true;
+                    }
+                    if (stream != null)
+                    {
+                        stream.Close();
+                    }
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return false;
                 }
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                if (response.StatusCode == HttpStatusCode.NoContent)
+                else
                 {
-                    return true;
+                    if (stream != null)
+                    {
+                        stream.Close();
+                    }
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return false;
                 }
-                return false;
-            } else {
-                return false;
+            }
+            catch { throw; }
+            finally {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+                if (response != null)
+                {
+                    response.Close();
+                }
             }
         }
         // REST @DELETE 方法
         public static bool doDeleteMethod(string metodUrl)
         {
-            if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+            HttpWebResponse response = null;
+
+            try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
-                request.Method = "delete";
-                request.ContentType = "application/json;charset=UTF-8";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                if (response.StatusCode == HttpStatusCode.OK)
+                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
                 {
-                    return true;
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    request.Method = "delete";
+                    request.ContentType = "application/json;charset=UTF-8";
+                    response = (HttpWebResponse)request.GetResponse();
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        if (response != null)
+                        {
+                            response.Close();
+                        }
+                        return true;
+                    }
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return false;
+                    //using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("UTF-8")))
+                    //{
+                    //    string responseString = reader.ReadToEnd();
+                    //    //if (responseString.Equals("1"))
+                    //    //{
+                    //    //    return true;
+                    //    //}
+                    //    //return false;
+                    //}
                 }
-                return false;
-                //using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("UTF-8")))
-                //{
-                //    string responseString = reader.ReadToEnd();
-                //    //if (responseString.Equals("1"))
-                //    //{
-                //    //    return true;
-                //    //}
-                //    //return false;
-                //}
-            } else {
-                return false;
+                else
+                {
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                    return false;
+                }
+            }
+            catch {
+                throw;
+            }
+            finally {
+                if (response != null)
+                {
+                    response.Close();
+                }
             }
         }
         //// REST @DELETE 方法
@@ -372,21 +552,35 @@ namespace CommonClassLibrary
         //    return result;
         //}
         private static bool CheckUrlVisit(string url) {
+
+            HttpWebResponse response = null;
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-           
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                if (response.StatusCode==HttpStatusCode.OK)
+                response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
                     return true;
                 }
-                    
+
             }
-            catch(WebException webex)
+            catch (WebException webex)
             {
+                if (response != null)
+                {
+                    response.Close();
+                }
+
                 return false;
+            }
+            finally {
+
+                if (response != null)
+                {
+                    response.Close();
+                }
             }
             return false; 
         }
