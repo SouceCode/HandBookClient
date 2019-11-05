@@ -94,7 +94,7 @@ namespace HandBookClient.Game
                 DataTable dataTable = HttpClientUtil.toDataTable(game_SettingList);
                 this.dataGridView1.DataSource = dataTable;
                 //AutoSizeColumn(this.dataGridView1);
-
+                AutoSizeColumnFill(this.dataGridView1);
 
                 this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
                 this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
@@ -226,7 +226,7 @@ namespace HandBookClient.Game
         /// 使DataGridView的列自适应宽度
         /// </summary>
         /// <param name="dgViewFiles"></param>
-        [Obsolete("该方法已被弃用，")]
+        [Obsolete("该方法已被弃用，请使用AutoSizeColumnFill")]
         private void AutoSizeColumn(DataGridView dgViewFiles)
         {
             int width = 0;
@@ -254,6 +254,20 @@ namespace HandBookClient.Game
             ////冻结某列 从左开始 0，1，2
             //dgViewFiles.Columns[1].Frozen = true;
             dgViewFiles.Columns[1].FillWeight = 1;
+        }
+        /// <summary>
+        /// 使DataGridView的列自适应宽度
+        /// </summary>
+        /// <param name="dgViewFiles"></param>
+        private void AutoSizeColumnFill(DataGridView dgViewFiles)
+        {
+           
+            //将模式改为填充。
+
+                dgViewFiles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+          
+            //////设置某列宽度比例
+            //dgViewFiles.Columns[1].FillWeight = 20;
         }
 
         private void frmGameSettingList_Load(object sender, EventArgs e)
