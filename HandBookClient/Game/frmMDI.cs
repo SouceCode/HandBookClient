@@ -30,7 +30,10 @@ namespace HandBookClient.Game
             Game.frmGameSettingList frmGameSetting = new Game.frmGameSettingList();
             frmGameSetting.MdiParent = this;
             frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
+            frmGameSetting.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(frmGameSetting);
             frmGameSetting.Show();
+            //frmGameSetting.Show();
             //this.LayoutMdi(MdiLayout.Cascade);
         }
         /// <summary>
@@ -63,7 +66,24 @@ namespace HandBookClient.Game
             //在主窗口打开的时候，就打开子窗口
             frmChild.MdiParent = this;
             frmChild.Location = new Point(0, 0);//显示位置
+            frmChild.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(frmChild);
             frmChild.Show();
+            //frmChild.Show();
+        }
+
+        private void expandableSplitter1_ExpandedChanging(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
+        {
+            if (this.splitContainer1.Panel1Collapsed == false)
+            {
+                expandableSplitter1.Left = 200;
+                splitContainer1.Panel1Collapsed = true;
+            }
+            else
+            {
+                expandableSplitter1.Left = 25;
+                splitContainer1.Panel1Collapsed = false;
+            }
         }
     }
 }

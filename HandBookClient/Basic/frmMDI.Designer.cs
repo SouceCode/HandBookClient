@@ -70,6 +70,7 @@
             this.Name = "frmMDI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "基础配置";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMDI_FormClosed);
             this.Load += new System.EventHandler(this.frmMDI_Load);
             this.menuStrip1.ResumeLayout(false);
