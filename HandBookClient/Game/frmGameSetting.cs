@@ -33,7 +33,9 @@ namespace HandBookClient.Game
             this.txtPassWord.Text = obj.PassWord;
             this.txtRemark.Text = obj.ReMark;
             this.cbTryType.SelectedIndex = this.cbTryType.FindString(obj.TryType.ToString());
+            this.cbDevices.SelectedIndex = this.cbDevices.FindString(obj.Devices.ToString());
 
+            
 
             //超出控件的范围处理
             if (obj.DeadLine < DateTimePicker.MinimumDateTime || obj.DeadLine > DateTimePicker.MaximumDateTime)
@@ -84,7 +86,8 @@ namespace HandBookClient.Game
                 game_Setting.ReMark = this.txtRemark.Text;
                 game_Setting.DeadLine = this.dpDeadLine.Value;
                 game_Setting.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
-                string jsonbody = JsonConvert.SerializeObject(game_Setting);
+                    game_Setting.Devices=(DevicesEnum)Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false);
+                    string jsonbody = JsonConvert.SerializeObject(game_Setting);
                 string url = "/Game_Settings/" + game_Setting.Id;
                 bool isSuccess = HttpClientUtil.doPutMethodToObj(url, jsonbody);
                 if (isSuccess)
@@ -130,7 +133,9 @@ namespace HandBookClient.Game
                 game_SettingInput.CreateDate = DateTime.Now;
                 game_SettingInput.DeadLine = this.dpDeadLine.Value;
                 game_SettingInput.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
+                    game_SettingInput.Devices = (DevicesEnum)Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false);
 
+                    
                 string jsonbody = JsonConvert.SerializeObject(game_SettingInput);
 
                 //string jsonbody = "{\"Name\":\"" + this.txtUserName.Text + "\",\"ReMark\":\"" + this.txtRemark.Text + "\"}";
@@ -165,6 +170,8 @@ namespace HandBookClient.Game
         }
         private void Init() {
             this.cbTryType.DataSource = System.Enum.GetNames(typeof(TryTypeEnum));
+            this.cbDevices.DataSource = System.Enum.GetNames(typeof(DevicesEnum));
+            
         }
     }
 }

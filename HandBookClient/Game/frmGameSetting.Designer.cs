@@ -38,10 +38,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbTryType = new System.Windows.Forms.ComboBox();
+            this.lblTryType = new System.Windows.Forms.Label();
             this.dpDeadLine = new System.Windows.Forms.DateTimePicker();
             this.lblDeadLine = new System.Windows.Forms.Label();
-            this.lblTryType = new System.Windows.Forms.Label();
-            this.cbTryType = new System.Windows.Forms.ComboBox();
+            this.lblDevices = new System.Windows.Forms.Label();
+            this.cbDevices = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             // lblRemark
             // 
             this.lblRemark.AutoSize = true;
-            this.lblRemark.Location = new System.Drawing.Point(21, 343);
+            this.lblRemark.Location = new System.Drawing.Point(21, 403);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(41, 12);
             this.lblRemark.TabIndex = 1;
@@ -72,7 +74,7 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(90, 274);
+            this.txtRemark.Location = new System.Drawing.Point(90, 334);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(313, 150);
@@ -124,7 +126,9 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(450, 450);
+            this.panel1.Controls.Add(this.cbDevices);
             this.panel1.Controls.Add(this.cbTryType);
+            this.panel1.Controls.Add(this.lblDevices);
             this.panel1.Controls.Add(this.lblTryType);
             this.panel1.Controls.Add(this.dpDeadLine);
             this.panel1.Controls.Add(this.lblDeadLine);
@@ -140,6 +144,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(426, 328);
             this.panel1.TabIndex = 9;
+            // 
+            // cbTryType
+            // 
+            this.cbTryType.FormattingEnabled = true;
+            this.cbTryType.Location = new System.Drawing.Point(90, 218);
+            this.cbTryType.Name = "cbTryType";
+            this.cbTryType.Size = new System.Drawing.Size(313, 20);
+            this.cbTryType.TabIndex = 12;
+            // 
+            // lblTryType
+            // 
+            this.lblTryType.AutoSize = true;
+            this.lblTryType.Location = new System.Drawing.Point(28, 218);
+            this.lblTryType.Name = "lblTryType";
+            this.lblTryType.Size = new System.Drawing.Size(47, 12);
+            this.lblTryType.TabIndex = 11;
+            this.lblTryType.Text = "TryType";
             // 
             // dpDeadLine
             // 
@@ -159,22 +180,22 @@
             this.lblDeadLine.TabIndex = 9;
             this.lblDeadLine.Text = "DeadLine";
             // 
-            // lblTryType
+            // lblDevices
             // 
-            this.lblTryType.AutoSize = true;
-            this.lblTryType.Location = new System.Drawing.Point(28, 218);
-            this.lblTryType.Name = "lblTryType";
-            this.lblTryType.Size = new System.Drawing.Size(47, 12);
-            this.lblTryType.TabIndex = 11;
-            this.lblTryType.Text = "TryType";
+            this.lblDevices.AutoSize = true;
+            this.lblDevices.Location = new System.Drawing.Point(28, 273);
+            this.lblDevices.Name = "lblDevices";
+            this.lblDevices.Size = new System.Drawing.Size(47, 12);
+            this.lblDevices.TabIndex = 11;
+            this.lblDevices.Text = "Devices";
             // 
-            // cbTryType
+            // cbDevices
             // 
-            this.cbTryType.FormattingEnabled = true;
-            this.cbTryType.Location = new System.Drawing.Point(90, 218);
-            this.cbTryType.Name = "cbTryType";
-            this.cbTryType.Size = new System.Drawing.Size(313, 20);
-            this.cbTryType.TabIndex = 12;
+            this.cbDevices.FormattingEnabled = true;
+            this.cbDevices.Location = new System.Drawing.Point(90, 273);
+            this.cbDevices.Name = "cbDevices";
+            this.cbDevices.Size = new System.Drawing.Size(313, 20);
+            this.cbDevices.TabIndex = 12;
             // 
             // frmGameSetting
             // 
@@ -208,5 +229,7 @@
         private System.Windows.Forms.Label lblDeadLine;
         private System.Windows.Forms.ComboBox cbTryType;
         private System.Windows.Forms.Label lblTryType;
+        private System.Windows.Forms.ComboBox cbDevices;
+        private System.Windows.Forms.Label lblDevices;
     }
 }
