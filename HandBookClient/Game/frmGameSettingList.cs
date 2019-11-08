@@ -24,11 +24,14 @@ namespace HandBookClient.Game
         public int currentPage = 0;    //当前页
         DataTable dtSource = new DataTable();
         #endregion
-
-
+        #region 排序使用
+        private string orderstr;      //排序
+        private int SortOrder_ = 0;
+        #endregion
         public frmGameSettingList()
         {
             InitializeComponent();
+            Init();
         }
         /// <summary>
         /// 按钮单击触发
@@ -75,11 +78,33 @@ namespace HandBookClient.Game
             pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
             string sql = "select * from Game_Settings gs";
             string wherestr = " where 1=1 ";
+            //
             if (!string.IsNullOrEmpty(this.txtUrl.Text))
             {
                 wherestr += " AND gs.Url='" + this.txtUrl.Text+"' ";
             }
+            //
+            if (this.rdbtnYES.Checked)
+            {
+                wherestr += " AND gs.IsCompleted=1 ";
+            }
+            else if (this.rdbtnNo.Checked)
+            {
+                wherestr += " AND gs.IsCompleted=0 ";
+            }
+            //
+            if (this.cbDevices.SelectedItem!=null&&this.cbDevices.SelectedItem.ToString() != "")
+            {
+                wherestr += " AND gs.Devices= " + Convert.ToInt32(Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false));
+            }
+             if (this.cbTryType.SelectedItem != null && this.cbTryType.SelectedItem.ToString() != "")
+            {
+                wherestr += " AND gs.TryType=" + Convert.ToInt32(Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false));
+            }
+
+
             sql += wherestr;
+            sql += orderstr;
             string url = "/Game_Settings/GetGame_SettingsPageCount?sqlstr=" + sql + "&size=" + pageSize;
             pageCount = HttpClientUtil.doGetMethodToObj<int>(url);
 
@@ -92,6 +117,7 @@ namespace HandBookClient.Game
             if (game_SettingList!=null)
             {
                 DataTable dataTable = HttpClientUtil.toDataTable(game_SettingList);
+                this.dataGridView1.Columns.Clear();
                 this.dataGridView1.DataSource = dataTable;
                 //AutoSizeColumn(this.dataGridView1);
                 AutoSizeColumnFill(this.dataGridView1);
@@ -202,6 +228,11 @@ namespace HandBookClient.Game
         private void btnReset_Click(object sender, EventArgs e)
         {
             this.txtUrl.Text = string.Empty;
+            this.rdbtnYES.Checked = false;
+            this.rdbtnNo.Checked = false;
+            this.rdbtnAll.Checked = false;
+            this.cbTryType.SelectedItem = null;
+            this.cbDevices.SelectedItem = null;
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -283,6 +314,45 @@ namespace HandBookClient.Game
         {
             //直接调用修改按钮
             btnEdit_Click();
+        }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            orderstr = string.Empty;
+            //取得点击列的索引
+            int nColumnIndex = e.ColumnIndex;
+            if (SortOrder_ == 0)    //程序设定的默认排序   
+            {
+                orderstr += " Order By ";
+                   orderstr += this.dataGridView1.Columns[nColumnIndex].Name + " ASC";    //指定升序排列
+                SortOrder_ = 1;
+            }
+            else
+            {
+                orderstr += " Order By ";
+                orderstr += this.dataGridView1.Columns[nColumnIndex].Name + " desc";    //指定升序排列
+                SortOrder_ = 0;
+            }
+            btnSearch_Click();
+
+        }
+        private void Init()
+        {
+            this.cbTryType.DataSource = System.Enum.GetNames(typeof(TryTypeEnum));
+            this.cbDevices.DataSource = System.Enum.GetNames(typeof(DevicesEnum));
+            this.cbTryType.SelectedItem = null;
+            this.cbDevices.SelectedItem = null;
+            //foreach (var item in System.Enum.GetNames(typeof(TryTypeEnum)))
+            //{
+
+            //    cbTryType.Items.Add(item);
+            //}
+            //foreach (var item in System.Enum.GetNames(typeof(DevicesEnum)))
+            //{
+
+            //    cbDevices.Items.Add(item);
+            //}
+
         }
     }
 }
