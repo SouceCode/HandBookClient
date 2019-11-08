@@ -131,7 +131,11 @@ namespace HandBookClient.Game
                     game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
                     game_SettingObject.CreateDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
                     game_SettingObject.DeadLine= Convert.ToDateTime(dataGridView1.Rows[i].Cells[6].Value);
-                    game_SettingObject.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), dataGridView1.Rows[i].Cells[7].Value.ToString(), false); 
+                    game_SettingObject.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), dataGridView1.Rows[i].Cells[7].Value.ToString(), false);
+                    game_SettingObject.Devices = (DevicesEnum)Enum.Parse(typeof(DevicesEnum), dataGridView1.Rows[i].Cells[8].Value.ToString(), false);
+                    game_SettingObject.IsCompleted = Convert.ToBoolean(dataGridView1.Rows[i].Cells[9].Value);
+
+                   
                     frmGameSetting f1 = new frmGameSetting(game_SettingObject);//实例化窗体
                     this.Visible = false;//设置当前窗体为不可视
                     f1.ShowDialog();//打开窗体f1
