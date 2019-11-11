@@ -38,6 +38,14 @@
             this.btnDelete = new System.Windows.Forms.ToolBarButton();
             this.btnClose = new System.Windows.Forms.ToolBarButton();
             this.grbFilter = new System.Windows.Forms.GroupBox();
+            this.lblDevices = new System.Windows.Forms.Label();
+            this.lblTryType = new System.Windows.Forms.Label();
+            this.cbDevices = new System.Windows.Forms.ComboBox();
+            this.cbTryType = new System.Windows.Forms.ComboBox();
+            this.gbIsCompleted = new System.Windows.Forms.GroupBox();
+            this.rdbtnAll = new System.Windows.Forms.RadioButton();
+            this.rdbtnNo = new System.Windows.Forms.RadioButton();
+            this.rdbtnYES = new System.Windows.Forms.RadioButton();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.lblUrl = new System.Windows.Forms.Label();
@@ -52,19 +60,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
-            this.gbIsCompleted = new System.Windows.Forms.GroupBox();
-            this.rdbtnYES = new System.Windows.Forms.RadioButton();
-            this.rdbtnAll = new System.Windows.Forms.RadioButton();
-            this.rdbtnNo = new System.Windows.Forms.RadioButton();
-            this.cbTryType = new System.Windows.Forms.ComboBox();
-            this.cbDevices = new System.Windows.Forms.ComboBox();
-            this.lblTryType = new System.Windows.Forms.Label();
-            this.lblDevices = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.grbFilter.SuspendLayout();
+            this.gbIsCompleted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.gbIsCompleted.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -141,6 +142,87 @@
             this.grbFilter.TabIndex = 1;
             this.grbFilter.TabStop = false;
             this.grbFilter.Text = "查询条件";
+            // 
+            // lblDevices
+            // 
+            this.lblDevices.AutoSize = true;
+            this.lblDevices.Location = new System.Drawing.Point(31, 72);
+            this.lblDevices.Name = "lblDevices";
+            this.lblDevices.Size = new System.Drawing.Size(47, 12);
+            this.lblDevices.TabIndex = 9;
+            this.lblDevices.Text = "Devices";
+            // 
+            // lblTryType
+            // 
+            this.lblTryType.AutoSize = true;
+            this.lblTryType.Location = new System.Drawing.Point(31, 24);
+            this.lblTryType.Name = "lblTryType";
+            this.lblTryType.Size = new System.Drawing.Size(47, 12);
+            this.lblTryType.TabIndex = 8;
+            this.lblTryType.Text = "TryType";
+            // 
+            // cbDevices
+            // 
+            this.cbDevices.FormattingEnabled = true;
+            this.cbDevices.Location = new System.Drawing.Point(93, 69);
+            this.cbDevices.Name = "cbDevices";
+            this.cbDevices.Size = new System.Drawing.Size(121, 20);
+            this.cbDevices.TabIndex = 7;
+            this.cbDevices.Text = "请选择";
+            // 
+            // cbTryType
+            // 
+            this.cbTryType.FormattingEnabled = true;
+            this.cbTryType.Location = new System.Drawing.Point(93, 21);
+            this.cbTryType.Name = "cbTryType";
+            this.cbTryType.Size = new System.Drawing.Size(121, 20);
+            this.cbTryType.TabIndex = 6;
+            this.cbTryType.Text = "请选择";
+            // 
+            // gbIsCompleted
+            // 
+            this.gbIsCompleted.Controls.Add(this.rdbtnAll);
+            this.gbIsCompleted.Controls.Add(this.rdbtnNo);
+            this.gbIsCompleted.Controls.Add(this.rdbtnYES);
+            this.gbIsCompleted.Location = new System.Drawing.Point(519, 20);
+            this.gbIsCompleted.Name = "gbIsCompleted";
+            this.gbIsCompleted.Size = new System.Drawing.Size(235, 47);
+            this.gbIsCompleted.TabIndex = 5;
+            this.gbIsCompleted.TabStop = false;
+            this.gbIsCompleted.Text = "游戏是否达标（领奖标准）";
+            // 
+            // rdbtnAll
+            // 
+            this.rdbtnAll.AutoSize = true;
+            this.rdbtnAll.Location = new System.Drawing.Point(140, 25);
+            this.rdbtnAll.Name = "rdbtnAll";
+            this.rdbtnAll.Size = new System.Drawing.Size(47, 16);
+            this.rdbtnAll.TabIndex = 2;
+            this.rdbtnAll.TabStop = true;
+            this.rdbtnAll.Text = "全部";
+            this.rdbtnAll.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnNo
+            // 
+            this.rdbtnNo.AutoSize = true;
+            this.rdbtnNo.Location = new System.Drawing.Point(75, 24);
+            this.rdbtnNo.Name = "rdbtnNo";
+            this.rdbtnNo.Size = new System.Drawing.Size(59, 16);
+            this.rdbtnNo.TabIndex = 1;
+            this.rdbtnNo.TabStop = true;
+            this.rdbtnNo.Text = "未达标";
+            this.rdbtnNo.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnYES
+            // 
+            this.rdbtnYES.AutoSize = true;
+            this.rdbtnYES.Location = new System.Drawing.Point(10, 25);
+            this.rdbtnYES.Name = "rdbtnYES";
+            this.rdbtnYES.Size = new System.Drawing.Size(59, 16);
+            this.rdbtnYES.TabIndex = 0;
+            this.rdbtnYES.TabStop = true;
+            this.rdbtnYES.Text = "已达标";
+            this.rdbtnYES.UseVisualStyleBackColor = true;
             // 
             // btnReset
             // 
@@ -279,86 +361,10 @@
             this.toolStripcbPageSize.Size = new System.Drawing.Size(121, 25);
             this.toolStripcbPageSize.Text = "20";
             // 
-            // gbIsCompleted
+            // contextMenuStrip1
             // 
-            this.gbIsCompleted.Controls.Add(this.rdbtnAll);
-            this.gbIsCompleted.Controls.Add(this.rdbtnNo);
-            this.gbIsCompleted.Controls.Add(this.rdbtnYES);
-            this.gbIsCompleted.Location = new System.Drawing.Point(519, 20);
-            this.gbIsCompleted.Name = "gbIsCompleted";
-            this.gbIsCompleted.Size = new System.Drawing.Size(235, 47);
-            this.gbIsCompleted.TabIndex = 5;
-            this.gbIsCompleted.TabStop = false;
-            this.gbIsCompleted.Text = "游戏是否达标（领奖标准）";
-            // 
-            // rdbtnYES
-            // 
-            this.rdbtnYES.AutoSize = true;
-            this.rdbtnYES.Location = new System.Drawing.Point(10, 25);
-            this.rdbtnYES.Name = "rdbtnYES";
-            this.rdbtnYES.Size = new System.Drawing.Size(59, 16);
-            this.rdbtnYES.TabIndex = 0;
-            this.rdbtnYES.TabStop = true;
-            this.rdbtnYES.Text = "已达标";
-            this.rdbtnYES.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnAll
-            // 
-            this.rdbtnAll.AutoSize = true;
-            this.rdbtnAll.Location = new System.Drawing.Point(140, 25);
-            this.rdbtnAll.Name = "rdbtnAll";
-            this.rdbtnAll.Size = new System.Drawing.Size(47, 16);
-            this.rdbtnAll.TabIndex = 2;
-            this.rdbtnAll.TabStop = true;
-            this.rdbtnAll.Text = "全部";
-            this.rdbtnAll.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnNo
-            // 
-            this.rdbtnNo.AutoSize = true;
-            this.rdbtnNo.Location = new System.Drawing.Point(75, 24);
-            this.rdbtnNo.Name = "rdbtnNo";
-            this.rdbtnNo.Size = new System.Drawing.Size(59, 16);
-            this.rdbtnNo.TabIndex = 1;
-            this.rdbtnNo.TabStop = true;
-            this.rdbtnNo.Text = "未达标";
-            this.rdbtnNo.UseVisualStyleBackColor = true;
-            // 
-            // cbTryType
-            // 
-            this.cbTryType.FormattingEnabled = true;
-            this.cbTryType.Location = new System.Drawing.Point(93, 21);
-            this.cbTryType.Name = "cbTryType";
-            this.cbTryType.Size = new System.Drawing.Size(121, 20);
-            this.cbTryType.TabIndex = 6;
-            this.cbTryType.Text = "请选择";
-            // 
-            // cbDevices
-            // 
-            this.cbDevices.FormattingEnabled = true;
-            this.cbDevices.Location = new System.Drawing.Point(93, 69);
-            this.cbDevices.Name = "cbDevices";
-            this.cbDevices.Size = new System.Drawing.Size(121, 20);
-            this.cbDevices.TabIndex = 7;
-            this.cbDevices.Text = "请选择";
-            // 
-            // lblTryType
-            // 
-            this.lblTryType.AutoSize = true;
-            this.lblTryType.Location = new System.Drawing.Point(31, 24);
-            this.lblTryType.Name = "lblTryType";
-            this.lblTryType.Size = new System.Drawing.Size(47, 12);
-            this.lblTryType.TabIndex = 8;
-            this.lblTryType.Text = "TryType";
-            // 
-            // lblDevices
-            // 
-            this.lblDevices.AutoSize = true;
-            this.lblDevices.Location = new System.Drawing.Point(31, 72);
-            this.lblDevices.Name = "lblDevices";
-            this.lblDevices.Size = new System.Drawing.Size(47, 12);
-            this.lblDevices.TabIndex = 9;
-            this.lblDevices.Text = "Devices";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
             // 
             // frmGameSettingList
             // 
@@ -374,13 +380,13 @@
             this.Load += new System.EventHandler(this.frmGameSettingList_Load);
             this.grbFilter.ResumeLayout(false);
             this.grbFilter.PerformLayout();
+            this.gbIsCompleted.ResumeLayout(false);
+            this.gbIsCompleted.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.gbIsCompleted.ResumeLayout(false);
-            this.gbIsCompleted.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,5 +424,6 @@
         private System.Windows.Forms.Label lblTryType;
         private System.Windows.Forms.ComboBox cbDevices;
         private System.Windows.Forms.ComboBox cbTryType;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

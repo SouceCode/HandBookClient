@@ -45,6 +45,11 @@ namespace HandBookClient.Game
                 if (e.Button == this.btnSearch)
                 {
                     this.btnSearch_Click();
+                    #region 右键显示隐藏列重置
+                    this.contextMenuStrip1.Items.Clear();//清空现有右键菜单
+                    initcontextMenuStrip();//动态编写右键菜单
+                    #endregion
+
                 }
                 else if (e.Button == this.btnAdd)
                 {
@@ -308,6 +313,7 @@ namespace HandBookClient.Game
         private void frmGameSettingList_Load(object sender, EventArgs e)
         {
             
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -318,6 +324,18 @@ namespace HandBookClient.Game
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {//右键表头操作
+                Point point = this.dataGridView1.PointToScreen(new Point(0, 0));
+                int x = 0;
+                DataGridViewColumnCollection columns = this.dataGridView1.Columns;
+                for (int i = 0; i < e.ColumnIndex; i++)
+                {
+                    if (columns[i].Visible)
+                        x += columns[i].Width;
+                }
+                this.contextMenuStrip1.Show(this.dataGridView1.PointToScreen(new Point(x + e.X, e.Y)));
+            }else { //排序操作
             orderstr = string.Empty;
             //取得点击列的索引
             int nColumnIndex = e.ColumnIndex;
@@ -334,6 +352,7 @@ namespace HandBookClient.Game
                 SortOrder_ = 0;
             }
             btnSearch_Click();
+            }
 
         }
         private void Init()
@@ -353,6 +372,50 @@ namespace HandBookClient.Game
             //    cbDevices.Items.Add(item);
             //}
 
+
+            
+
         }
+        private void initcontextMenuStrip() {
+
+
+            DataGridViewColumnCollection columns = this.dataGridView1.Columns;
+            for (int i = 0; i < columns.Count; i++)
+            {
+                if (columns[i].Visible&&this.contextMenuStrip1.Items.Count!= columns.Count)
+                {
+
+                    ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
+                    toolStripMenuItem1.Name = columns[i].Name;
+                    toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+                    toolStripMenuItem1.Text = columns[i].Name;
+                    toolStripMenuItem1.Tag = columns[i].Name;
+                    toolStripMenuItem1.Click += new System.EventHandler(MenuClicked);
+                    toolStripMenuItem1.Checked = true;
+                    this.contextMenuStrip1.Items.Add(toolStripMenuItem1);
+                }
+            }
+
+
+            
+        }
+
+    private    void MenuClicked(object sender, EventArgs e)
+        {
+            //以下主要是动态生成事件
+            ToolStripMenuItem tsm = sender as ToolStripMenuItem;
+            if (tsm.Checked)
+            {
+                this.dataGridView1.Columns[tsm.Tag.ToString()].Visible = false;
+                tsm.Checked = false;
+            }
+            else
+            {
+                this.dataGridView1.Columns[tsm.Tag.ToString()].Visible = true;
+                tsm.Checked = true;
+            }
+
+        }
+
     }
 }
