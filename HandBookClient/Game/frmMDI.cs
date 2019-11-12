@@ -14,6 +14,7 @@ namespace HandBookClient.Game
     {
         frmMain frmMain = new frmMain();
         frmGameSettingList frmChild = new frmGameSettingList();  //菜单树窗口
+        frmToList frmChild2 = new frmToList();  //菜单树窗口
         public frmMDI()
         {
             InitializeComponent();
@@ -91,6 +92,16 @@ namespace HandBookClient.Game
             splitContainer1.Panel2.Controls.Add(frmChild);
             frmChild.Show();
             //frmChild.Show();
+
+
+
+            //在主窗口打开的时候，就打开子窗口
+            frmChild2.MdiParent = this;
+            frmChild2.TopLevel = false;
+            frmChild2.Dock = DockStyle.Fill;
+            splitContainer1.Panel1.Controls.Add(frmChild2);
+            frmChild2.Show();
+            
         }
 
         private void expandableSplitter1_ExpandedChanging(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)

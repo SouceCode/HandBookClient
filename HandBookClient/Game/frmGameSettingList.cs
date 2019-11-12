@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,10 @@ namespace HandBookClient.Game
         #region 排序使用
         private string orderstr;      //排序
         private int SortOrder_ = 0;
+        #endregion
+
+        #region Sqlite
+        private static SqLiteHelper sql;
         #endregion
         public frmGameSettingList()
         {
@@ -417,5 +422,38 @@ namespace HandBookClient.Game
 
         }
 
+        private void btnToDo_Click(object sender, EventArgs e)
+        {
+           
+
+
+            string[] str = new string[dataGridView1.Rows.Count];
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Selected == true)
+                {
+                    Game_Setting game_SettingObject = new Game_Setting();
+                    game_SettingObject.Id = Convert.ToInt64(dataGridView1.Rows[i].Cells[0].Value);
+                    game_SettingObject.Url = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
+                    game_SettingObject.UserName = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
+                    game_SettingObject.PassWord = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value);
+                    game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
+                    game_SettingObject.CreateDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
+                    game_SettingObject.DeadLine = Convert.ToDateTime(dataGridView1.Rows[i].Cells[6].Value);
+                    game_SettingObject.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), dataGridView1.Rows[i].Cells[7].Value.ToString(), false);
+                    game_SettingObject.Devices = (DevicesEnum)Enum.Parse(typeof(DevicesEnum), dataGridView1.Rows[i].Cells[8].Value.ToString(), false);
+                    game_SettingObject.IsCompleted = Convert.ToBoolean(dataGridView1.Rows[i].Cells[9].Value);
+
+                    //sql = new SqLiteHelper("data source=mydb.db");
+                    sql = new SqLiteHelper();
+
+                    //创建名为TryGameToDo的数据表
+                    sql.CreateTable("TryGameToDo", new string[] { "Id", "Url", "UserName", "PassWord", "ReMark", "DeadLine" }, new string[] { "INTEGER", "TEXT", "TEXT", "TEXT", "TEXT", "TEXT" });
+                    //插入数据
+                    sql.InsertValues("TryGameToDo", new string[] { game_SettingObject.Id.ToString(), game_SettingObject.Url, game_SettingObject.UserName, game_SettingObject.PassWord, game_SettingObject.ReMark, game_SettingObject.DeadLine.ToString() });
+
+                }
+            }
+        }
     }
 }

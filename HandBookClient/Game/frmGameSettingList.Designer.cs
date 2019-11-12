@@ -61,6 +61,7 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnToDo = new System.Windows.Forms.Button();
             this.grbFilter.SuspendLayout();
             this.gbIsCompleted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -127,6 +128,7 @@
             // 
             // grbFilter
             // 
+            this.grbFilter.Controls.Add(this.btnToDo);
             this.grbFilter.Controls.Add(this.lblDevices);
             this.grbFilter.Controls.Add(this.lblTryType);
             this.grbFilter.Controls.Add(this.cbDevices);
@@ -364,7 +366,17 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // btnToDo
+            // 
+            this.btnToDo.Location = new System.Drawing.Point(767, 37);
+            this.btnToDo.Name = "btnToDo";
+            this.btnToDo.Size = new System.Drawing.Size(75, 23);
+            this.btnToDo.TabIndex = 10;
+            this.btnToDo.Text = "列入待办";
+            this.btnToDo.UseVisualStyleBackColor = true;
+            this.btnToDo.Click += new System.EventHandler(this.btnToDo_Click);
             // 
             // frmGameSettingList
             // 
@@ -425,5 +437,6 @@
         private System.Windows.Forms.ComboBox cbDevices;
         private System.Windows.Forms.ComboBox cbTryType;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button btnToDo;
     }
 }
