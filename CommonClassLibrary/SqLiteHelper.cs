@@ -28,6 +28,19 @@ namespace CommonClassLibrary
         /// 数据读取定义
         /// </summary>
         private SQLiteDataReader dataReader;
+        /// <summary>
+        /// 数据库链接串
+        /// </summary>
+
+        private static string basePath = System.Environment.CurrentDirectory + "/Data/";
+
+        /// <summary>
+        /// 数据库文件名
+        /// </summary>
+
+        private static string dBName;
+
+        
 
         /// <summary>
         /// 构造函数
@@ -68,12 +81,12 @@ namespace CommonClassLibrary
         //创建数据库文件
         public static void CreateDBFile(string fileName)
         {
-            string path = System.Environment.CurrentDirectory + @"/Data/";
-            if (!Directory.Exists(path))
+            dBName = fileName;
+            if (!Directory.Exists(basePath))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(basePath);
             }
-            string databaseFileName = path + fileName;
+            string databaseFileName = basePath + fileName;
             if (!File.Exists(databaseFileName))
             {
                 SQLiteConnection.CreateFile(databaseFileName);
@@ -83,7 +96,7 @@ namespace CommonClassLibrary
         private static string CreateConnectionString()
         {
             SQLiteConnectionStringBuilder connectionString = new SQLiteConnectionStringBuilder();
-            connectionString.DataSource = @"mydb.db";
+            connectionString.DataSource = basePath+ dBName;
 
             string conStr = connectionString.ToString();
             return conStr;
