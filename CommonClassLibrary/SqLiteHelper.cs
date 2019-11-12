@@ -28,6 +28,11 @@ namespace CommonClassLibrary
         /// 数据读取定义
         /// </summary>
         private SQLiteDataReader dataReader;
+
+        /// <summary>
+        /// 数据读取定义2
+        /// </summary>
+        private SQLiteDataAdapter dataAdapter;
         /// <summary>
         /// 数据库链接串
         /// </summary>
@@ -123,6 +128,29 @@ namespace CommonClassLibrary
             return dataReader;
         }
         /// <summary>
+        /// 执行SQL命令
+        /// </summary>
+        /// <returns>The query.</returns>
+        /// <param name="queryString">SQL命令字符串</param>
+        public SQLiteDataAdapter ExecuteQuerydataAdapter(string queryString)
+        {
+            try
+            {
+                dbCommand = dbConnection.CreateCommand();
+                dbCommand.CommandText = queryString;
+
+                dataAdapter = new SQLiteDataAdapter(dbCommand);//读数据库
+            }
+            catch (Exception e)
+            {
+                Log(e.Message);
+            }
+
+            return dataAdapter;
+        }
+
+
+        /// <summary>
         /// 关闭数据库连接
         /// </summary>
         public void CloseConnection()
@@ -158,7 +186,16 @@ namespace CommonClassLibrary
             string queryString = "SELECT * FROM " + tableName;
             return ExecuteQuery(queryString);
         }
-
+        /// <summary>
+        /// 读取整张数据表
+        /// </summary>
+        /// <returns>The full table.</returns>
+        /// <param name="tableName">数据表名称</param>
+        public SQLiteDataAdapter ReadFullTabledataAdapter(string tableName)
+        {
+            string queryString = "SELECT * FROM " + tableName;
+            return ExecuteQuerydataAdapter(queryString);
+        }
 
         /// <summary>
         /// 向指定数据表中插入数据

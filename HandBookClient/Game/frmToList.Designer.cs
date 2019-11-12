@@ -85,6 +85,7 @@
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnSave
             // 
@@ -104,6 +105,7 @@
             this.Controls.Add(this.plControl);
             this.Name = "frmToList";
             this.Text = "frmToList";
+            this.Load += new System.EventHandler(this.frmToList_Load);
             this.plControl.ResumeLayout(false);
             this.plControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
