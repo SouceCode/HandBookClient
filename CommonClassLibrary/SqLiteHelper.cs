@@ -196,6 +196,16 @@ namespace CommonClassLibrary
             string queryString = "SELECT * FROM " + tableName;
             return ExecuteQuerydataAdapter(queryString);
         }
+        /// <summary>
+        /// 读取整张数据表
+        /// </summary>
+        /// <returns>The full table.</returns>
+        /// <param name="tableName">数据表名称</param>
+        public SQLiteDataAdapter ReadFullTabledataAdapterNotDelete(string tableName)
+        {
+            string queryString = "SELECT * FROM " + tableName + " WHERE ISDELETED='False'";
+            return ExecuteQuerydataAdapter(queryString);
+        }
 
         /// <summary>
         /// 向指定数据表中插入数据

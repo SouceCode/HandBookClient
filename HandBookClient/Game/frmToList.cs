@@ -34,17 +34,13 @@ namespace HandBookClient.Game
             this.rtNotice.BackColor = Color.Gray;
             sql = new SqLiteHelper();
             //读取整张表
-            SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+            SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
             
             if (da!=null)
             {
                 ClearData("TryGameToDo");
                 da.Fill(ds, "TryGameToDo");
-                DataView dv = ds.Tables[0].DefaultView;
-                dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
-
-                this.dataGridView1.DataSource = dv.ToTable();
-
+                this.dataGridView1.DataSource = ds.Tables[0];
                 foreach (DataTable item in ds.Tables)
                 {
                     if (this.cbTable.FindString(item.TableName) == -1)
@@ -62,18 +58,14 @@ namespace HandBookClient.Game
 
             sql = new SqLiteHelper();
             //读取整张表
-            SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+            SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
 
             if (da != null)
             {
 
                 ClearData("TryGameToDo");
                 da.Fill(ds, "TryGameToDo");
-                DataView dv = ds.Tables[0].DefaultView;
-                dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
-
-                this.dataGridView1.DataSource = dv.ToTable();
-
+                this.dataGridView1.DataSource = ds.Tables[0];
                 foreach (DataTable item in ds.Tables)
                     {
                         if (this.cbTable.FindString(item.TableName) == -1)
@@ -101,29 +93,27 @@ namespace HandBookClient.Game
                 else if (cdt.Rows[i].RowState == DataRowState.Modified)
                 {
                     //更新方法
-                    Game_Setting game_SettingObject = new Game_Setting();
-                    game_SettingObject.Id = Convert.ToInt64(dataGridView1.Rows[i].Cells[0].Value);
-                    game_SettingObject.Url = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
-                    game_SettingObject.UserName = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
-                    game_SettingObject.PassWord = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value);
-                    game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
-                    game_SettingObject.DeadLine = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
+                    TryGameToDo tryGameToDoObject = new TryGameToDo();
+                    tryGameToDoObject.Id = Convert.ToInt64(dataGridView1.Rows[i].Cells[0].Value);
+                    tryGameToDoObject.Url = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
+                    tryGameToDoObject.UserName = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
+                    tryGameToDoObject.PassWord = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value);
+                    tryGameToDoObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
+                    tryGameToDoObject.DeadLine = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
+                    tryGameToDoObject.IsDeleted = Convert.ToBoolean(dataGridView1.Rows[i].Cells[6].Value);
+
                     sql = new SqLiteHelper();
                     //更新数据
-                    sql.UpdateValues("TryGameToDo", new string[] { "Url", "UserName", "PassWord","ReMark", "DeadLine" }, new string[] { game_SettingObject.Url, game_SettingObject.UserName, game_SettingObject.PassWord, game_SettingObject.ReMark, game_SettingObject.DeadLine.ToString() }, "Id", game_SettingObject.Id.ToString());
+                    sql.UpdateValues("TryGameToDo", new string[] { "Url", "UserName", "PassWord","ReMark", "DeadLine","IsDeleted" }, new string[] { tryGameToDoObject.Url, tryGameToDoObject.UserName, tryGameToDoObject.PassWord, tryGameToDoObject.ReMark, tryGameToDoObject.DeadLine.ToString(), tryGameToDoObject.IsDeleted.ToString() }, "Id", tryGameToDoObject.Id.ToString());
                     //刷新数据
                     //读取整张表
-                    SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+                    SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
 
                     if (da != null)
                     {
                         ClearData("TryGameToDo");
                         da.Fill(ds, "TryGameToDo");
 
-                        DataView dv = ds.Tables[0].DefaultView;
-                        dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
-
-                        this.dataGridView1.DataSource = dv.ToTable();
 
                         foreach (DataTable item in ds.Tables)
                         {
@@ -181,16 +171,13 @@ namespace HandBookClient.Game
                 sql.UpdateValues("TryGameToDo", new string[] { "IsDeleted", }, new string[] { tryGameToDoObject.IsDeleted.ToString() }, "Id", tryGameToDoObject.Id.ToString());
                 //刷新数据
                 //读取整张表
-                SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+                SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
 
                 if (da != null)
                 {
                     ClearData("TryGameToDo");
                     da.Fill(ds, "TryGameToDo");
-                    DataView dv = ds.Tables[0].DefaultView;
-                    dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
-
-                    this.dataGridView1.DataSource = dv.ToTable();
+                    this.dataGridView1.DataSource = ds.Tables[0];
 
                     foreach (DataTable item in ds.Tables)
                     {
