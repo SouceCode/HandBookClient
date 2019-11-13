@@ -62,6 +62,25 @@ namespace HandBookClient.Game
         /// </summary>
         /// <param name="frmName"></param>
         /// <returns></returns>
+        public bool IsExistfrm(string frmName)
+        {
+            Boolean flag = false;//判断标志
+            FormCollection formCollection = Application.OpenForms;//获取存在的窗体集合
+            foreach (Form name in formCollection)//循环遍历，判断
+            {
+                if (name.Name == frmName)//判断是否存在该窗体
+                {
+                    flag = true;//修改标志
+                    name.Activate();//存在，则激活
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 判断是否有重复的窗体
+        /// </summary>
+        /// <param name="frmName"></param>
+        /// <returns></returns>
         public bool IsExistsplitContainer1Panel2Controls(string frmName)
         {
             
@@ -95,12 +114,12 @@ namespace HandBookClient.Game
 
 
 
-            //在主窗口打开的时候，就打开子窗口
-            frmChild2.MdiParent = this;
-            frmChild2.TopLevel = false;
-            frmChild2.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(frmChild2);
-            frmChild2.Show();
+            ////在主窗口打开的时候，就打开子窗口
+            //frmChild2.MdiParent = this;
+            //frmChild2.TopLevel = false;
+            //frmChild2.Dock = DockStyle.Fill;
+            //splitContainer1.Panel1.Controls.Add(frmChild2);
+            //frmChild2.Show();
             
         }
 
@@ -116,6 +135,46 @@ namespace HandBookClient.Game
                 expandableSplitter1.Left = 25;
                 splitContainer1.Panel1Collapsed = false;
             }
+        }
+
+        private void treeView1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void treeView1_MouseClick(object sender, MouseEventArgs e)
+        {
+          
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+           string name = e.Node.Text.ToString();
+            if (name == "待办")
+            {
+                if (IsExistfrm("frmToList")){ return;}
+               frmChild2.ShowDialog();
+             }
+            //if (name == "员工登记")
+            //{
+            //    guidesoft.yuangongguanli.FormYGList f = new yuangongguanli.FormYGList();
+            //    f.ShowDialog();
+            //}
+            //if (name == "客户登记")
+            //{
+            //    guidesoft.khdj.FormKHList f = new khdj.FormKHList(UserHelper.username);
+            //    f.ShowDialog();
+            //}
+            //if (name == "成品入库")
+            //{
+            //    guidesoft.cprk.Formlist f = new cprk.Formlist(UserHelper.username);
+            //    f.ShowDialog();
+            //}
+            //if (name == "部门登记")
+            //{
+            //    guidesoft.bmdj.FormBMDJ f = new bmdj.FormBMDJ(UserHelper.username);
+            //    f.ShowDialog();
+            //}
         }
     }
 }

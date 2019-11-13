@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommonClassLibrary;
 using System.Data.SQLite;
+using ModelClassLibrary;
+using ModelClassLibrary.Enums;
+using ModelClassLibrary.SqliteModel;
+
 namespace HandBookClient.Game
 {
     public partial class frmToList : Form
@@ -25,22 +29,31 @@ namespace HandBookClient.Game
 
         private void frmToList_Load(object sender, EventArgs e)
         {
-          
+
+            this.rtNotice.Text = "数据来源自本地，不会影响线上数据，可随意更改";
+            this.rtNotice.BackColor = Color.Gray;
             sql = new SqLiteHelper();
             //读取整张表
             SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
             
             if (da!=null)
             {
+                ClearData("TryGameToDo");
                 da.Fill(ds, "TryGameToDo");
-                this.dataGridView1.DataSource = ds.Tables[0];
+                DataView dv = ds.Tables[0].DefaultView;
+                dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
+
+                this.dataGridView1.DataSource = dv.ToTable();
 
                 foreach (DataTable item in ds.Tables)
                 {
+                    if (this.cbTable.FindString(item.TableName) == -1)
+                    {
 
-                    cbTable.Items.Add(item.TableName);
+                        cbTable.Items.Add(item.TableName);
+                    }
                 }
-
+                
             }
         }
 
@@ -53,17 +66,151 @@ namespace HandBookClient.Game
 
             if (da != null)
             {
-                ds.Tables["TryGameToDo"].Clear();
+
+                ClearData("TryGameToDo");
                 da.Fill(ds, "TryGameToDo");
-                this.dataGridView1.DataSource = ds.Tables[0];
+                DataView dv = ds.Tables[0].DefaultView;
+                dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
+
+                this.dataGridView1.DataSource = dv.ToTable();
 
                 foreach (DataTable item in ds.Tables)
-                {
+                    {
+                        if (this.cbTable.FindString(item.TableName) == -1)
+                        {
+                            cbTable.Items.Add(item.TableName);
+                        }
 
-                    cbTable.Items.Add(item.TableName);
+                    }
+                
+                
+
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            DataTable cdt = ds.Tables[0].GetChanges();
+            for (int i = 0; i < cdt.Rows.Count; i++)
+            {
+                if (cdt.Rows[i].RowState == DataRowState.Deleted)
+                {
+                    //删除方法
+                }
+                else if (cdt.Rows[i].RowState == DataRowState.Modified)
+                {
+                    //更新方法
+                    Game_Setting game_SettingObject = new Game_Setting();
+                    game_SettingObject.Id = Convert.ToInt64(dataGridView1.Rows[i].Cells[0].Value);
+                    game_SettingObject.Url = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
+                    game_SettingObject.UserName = Convert.ToString(dataGridView1.Rows[i].Cells[2].Value);
+                    game_SettingObject.PassWord = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value);
+                    game_SettingObject.ReMark = Convert.ToString(dataGridView1.Rows[i].Cells[4].Value);
+                    game_SettingObject.DeadLine = Convert.ToDateTime(dataGridView1.Rows[i].Cells[5].Value);
+                    sql = new SqLiteHelper();
+                    //更新数据
+                    sql.UpdateValues("TryGameToDo", new string[] { "Url", "UserName", "PassWord","ReMark", "DeadLine" }, new string[] { game_SettingObject.Url, game_SettingObject.UserName, game_SettingObject.PassWord, game_SettingObject.ReMark, game_SettingObject.DeadLine.ToString() }, "Id", game_SettingObject.Id.ToString());
+                    //刷新数据
+                    //读取整张表
+                    SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+
+                    if (da != null)
+                    {
+                        ClearData("TryGameToDo");
+                        da.Fill(ds, "TryGameToDo");
+
+                        DataView dv = ds.Tables[0].DefaultView;
+                        dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
+
+                        this.dataGridView1.DataSource = dv.ToTable();
+
+                        foreach (DataTable item in ds.Tables)
+                        {
+                            if (this.cbTable.FindString(item.TableName) == -1)
+                            {
+                                cbTable.Items.Add(item.TableName);
+                            }
+                        }
+
+                    }
+                }
+                else if (cdt.Rows[i].RowState == DataRowState.Added)
+                {
+                    //新增方法
+
+                }
+            }
+
+           
+            ////删除Name="张三"且Age=26的记录,DeleteValuesOR方法类似
+            //sql.DeleteValuesAND("TryGameToDo", new string[] { "Name", "Age" }, new string[] { "张三", "22" }, new string[] { "=", "=" });
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //让用户选择是否删除
+            MessageBoxButtons btn = MessageBoxButtons.YesNoCancel;
+            if (MessageBox.Show("确定要删除数据吗？", "删除数据", btn) == DialogResult.Yes)
+            {
+                //取出选中行里面绑定的对象
+                //TryGameToDo tryGameToDoObject = dataGridView1.SelectedRows[0].DataBoundItem as TryGameToDo;
+
+               
+                TryGameToDo tryGameToDoObject = new TryGameToDo();
+                DataRowView rowView = this.dataGridView1.CurrentRow.DataBoundItem as DataRowView;
+                if (rowView != null)
+                {
+                    DataRow currentRow = rowView.Row;
+                    tryGameToDoObject.Id = long.Parse(currentRow["Id"].ToString());
+                    tryGameToDoObject.Url = currentRow["Url"].ToString();
+                    tryGameToDoObject.UserName = currentRow["UserName"].ToString();
+                    tryGameToDoObject.PassWord = currentRow["PassWord"].ToString();
+                    tryGameToDoObject.ReMark = currentRow["ReMark"].ToString();
+                    tryGameToDoObject.DeadLine = DateTime.Parse(currentRow["DeadLine"].ToString());
+                    tryGameToDoObject.IsDeleted = true;
+
+                }
+
+
+
+               
+                sql = new SqLiteHelper();
+                //更新数据
+                sql.UpdateValues("TryGameToDo", new string[] { "IsDeleted", }, new string[] { tryGameToDoObject.IsDeleted.ToString() }, "Id", tryGameToDoObject.Id.ToString());
+                //刷新数据
+                //读取整张表
+                SQLiteDataAdapter da = sql.ReadFullTabledataAdapter("TryGameToDo");
+
+                if (da != null)
+                {
+                    ClearData("TryGameToDo");
+                    da.Fill(ds, "TryGameToDo");
+                    DataView dv = ds.Tables[0].DefaultView;
+                    dv.RowFilter = "IsDeleted='False' "; //IsDeleted='False'为ＳＱＬ条件
+
+                    this.dataGridView1.DataSource = dv.ToTable();
+
+                    foreach (DataTable item in ds.Tables)
+                    {
+                        if (this.cbTable.FindString(item.TableName) == -1)
+                        {
+                            cbTable.Items.Add(item.TableName);
+                        }
+                    }
+
                 }
 
             }
+        }
+        private void ClearData(string tablename) {
+            if (ds.Tables.Count>0)
+            {
+                ds.Tables[tablename].Clear();
+
+            }
+           
         }
     }
 }
