@@ -17,6 +17,8 @@ namespace HandBookClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
+            //程序启动时读取log4net的配置文件。
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

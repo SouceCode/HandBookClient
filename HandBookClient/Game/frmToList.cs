@@ -29,27 +29,34 @@ namespace HandBookClient.Game
 
         private void frmToList_Load(object sender, EventArgs e)
         {
-
-            this.rtNotice.Text = "数据来源自本地，不会影响线上数据，可随意更改";
-            this.rtNotice.BackColor = Color.Gray;
-            sql = new SqLiteHelper();
-            //读取整张表
-            SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
-            
-            if (da!=null)
+           
+            try
             {
-                ClearData("TryGameToDo");
-                da.Fill(ds, "TryGameToDo");
-                this.dataGridView1.DataSource = ds.Tables[0];
-                foreach (DataTable item in ds.Tables)
-                {
-                    if (this.cbTable.FindString(item.TableName) == -1)
-                    {
+                this.rtNotice.Text = "数据来源自本地，不会影响线上数据，可随意更改";
+                this.rtNotice.BackColor = Color.Gray;
+                sql = new SqLiteHelper();
+                //读取整张表
+                SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
 
-                        cbTable.Items.Add(item.TableName);
+                if (da != null)
+                {
+                    ClearData("TryGameToDo");
+                    da.Fill(ds, "TryGameToDo");
+                    this.dataGridView1.DataSource = ds.Tables[0];
+                    foreach (DataTable item in ds.Tables)
+                    {
+                        if (this.cbTable.FindString(item.TableName) == -1)
+                        {
+
+                            cbTable.Items.Add(item.TableName);
+                        }
                     }
+
                 }
-                
+            }
+            catch(Exception ex) {
+                MessageBox.Show("系统发生异常，请联系管理员！","错误");
+                LogHelper.WriteLog("打开待办窗体异常",ex);
             }
         }
 
