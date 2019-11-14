@@ -38,6 +38,9 @@
             this.btnDelete = new System.Windows.Forms.ToolBarButton();
             this.btnClose = new System.Windows.Forms.ToolBarButton();
             this.grbFilter = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
@@ -49,9 +52,6 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             this.btnFirstPage = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.grbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -127,6 +127,32 @@
             this.grbFilter.TabIndex = 1;
             this.grbFilter.TabStop = false;
             this.grbFilter.Text = "查询条件";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(449, 18);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "重置条件";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(49, 21);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(189, 21);
+            this.txtName.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(13, 21);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(29, 12);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
             // 
             // dataGridView1
             // 
@@ -226,7 +252,7 @@
             "100"});
             this.toolStripcbPageSize.Name = "toolStripcbPageSize";
             this.toolStripcbPageSize.Size = new System.Drawing.Size(121, 25);
-            this.toolStripcbPageSize.Text = "20";
+            this.toolStripcbPageSize.Text = "100";
             // 
             // btnFirstPage
             // 
@@ -237,32 +263,6 @@
             this.btnFirstPage.Text = "第一页";
             this.btnFirstPage.UseVisualStyleBackColor = true;
             this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(13, 21);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(29, 12);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(49, 21);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(189, 21);
-            this.txtName.TabIndex = 1;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(449, 18);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 2;
-            this.btnReset.Text = "重置条件";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmBookList
             // 

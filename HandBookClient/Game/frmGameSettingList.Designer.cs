@@ -38,6 +38,7 @@
             this.btnDelete = new System.Windows.Forms.ToolBarButton();
             this.btnClose = new System.Windows.Forms.ToolBarButton();
             this.grbFilter = new System.Windows.Forms.GroupBox();
+            this.btnToDo = new System.Windows.Forms.Button();
             this.lblDevices = new System.Windows.Forms.Label();
             this.lblTryType = new System.Windows.Forms.Label();
             this.cbDevices = new System.Windows.Forms.ComboBox();
@@ -61,7 +62,6 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnToDo = new System.Windows.Forms.Button();
             this.grbFilter.SuspendLayout();
             this.gbIsCompleted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -144,6 +144,16 @@
             this.grbFilter.TabIndex = 1;
             this.grbFilter.TabStop = false;
             this.grbFilter.Text = "查询条件";
+            // 
+            // btnToDo
+            // 
+            this.btnToDo.Location = new System.Drawing.Point(767, 37);
+            this.btnToDo.Name = "btnToDo";
+            this.btnToDo.Size = new System.Drawing.Size(75, 23);
+            this.btnToDo.TabIndex = 10;
+            this.btnToDo.Text = "列入待办";
+            this.btnToDo.UseVisualStyleBackColor = true;
+            this.btnToDo.Click += new System.EventHandler(this.btnToDo_Click);
             // 
             // lblDevices
             // 
@@ -361,22 +371,12 @@
             "100"});
             this.toolStripcbPageSize.Name = "toolStripcbPageSize";
             this.toolStripcbPageSize.Size = new System.Drawing.Size(121, 25);
-            this.toolStripcbPageSize.Text = "20";
+            this.toolStripcbPageSize.Text = "100";
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // btnToDo
-            // 
-            this.btnToDo.Location = new System.Drawing.Point(767, 37);
-            this.btnToDo.Name = "btnToDo";
-            this.btnToDo.Size = new System.Drawing.Size(75, 23);
-            this.btnToDo.TabIndex = 10;
-            this.btnToDo.Text = "列入待办";
-            this.btnToDo.UseVisualStyleBackColor = true;
-            this.btnToDo.Click += new System.EventHandler(this.btnToDo_Click);
             // 
             // frmGameSettingList
             // 
