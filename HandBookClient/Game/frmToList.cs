@@ -62,8 +62,9 @@ namespace HandBookClient.Game
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
-            sql = new SqLiteHelper();
+            try
+            {
+                sql = new SqLiteHelper();
             //读取整张表
             SQLiteDataAdapter da = sql.ReadFullTabledataAdapterNotDelete("TryGameToDo");
 
@@ -85,12 +86,19 @@ namespace HandBookClient.Game
                 
 
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("异常", ex);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            DataTable cdt = ds.Tables[0].GetChanges();
+            try
+            {
+                DataTable cdt = ds.Tables[0].GetChanges();
             for (int i = 0; i < cdt.Rows.Count; i++)
             {
                 if (cdt.Rows[i].RowState == DataRowState.Deleted)
@@ -139,16 +147,23 @@ namespace HandBookClient.Game
                 }
             }
 
-           
-            ////删除Name="张三"且Age=26的记录,DeleteValuesOR方法类似
-            //sql.DeleteValuesAND("TryGameToDo", new string[] { "Name", "Age" }, new string[] { "张三", "22" }, new string[] { "=", "=" });
 
+                ////删除Name="张三"且Age=26的记录,DeleteValuesOR方法类似
+                //sql.DeleteValuesAND("TryGameToDo", new string[] { "Name", "Age" }, new string[] { "张三", "22" }, new string[] { "=", "=" });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("异常", ex);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //让用户选择是否删除
-            MessageBoxButtons btn = MessageBoxButtons.YesNoCancel;
+            try
+            {
+                //让用户选择是否删除
+                MessageBoxButtons btn = MessageBoxButtons.YesNoCancel;
             if (MessageBox.Show("确定要删除数据吗？", "删除数据", btn) == DialogResult.Yes)
             {
                 //取出选中行里面绑定的对象
@@ -196,6 +211,12 @@ namespace HandBookClient.Game
 
                 }
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("异常", ex);
             }
         }
         private void ClearData(string tablename) {

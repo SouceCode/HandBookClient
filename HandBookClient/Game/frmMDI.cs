@@ -27,7 +27,9 @@ namespace HandBookClient.Game
 
         private void menuItemGameSetting_Click(object sender, EventArgs e)
         {
-            if (IsExistMDI("frmGameSettingList")|| IsExistsplitContainer1Panel2Controls("frmGameSettingList")) { return; }   //防止重复打开窗体，新增如下代码
+            try
+            {
+                if (IsExistMDI("frmGameSettingList")|| IsExistsplitContainer1Panel2Controls("frmGameSettingList")) { return; }   //防止重复打开窗体，新增如下代码
             Game.frmGameSettingList frmGameSetting = new Game.frmGameSettingList();
             frmGameSetting.MdiParent = this;
             frmGameSetting.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
@@ -35,8 +37,14 @@ namespace HandBookClient.Game
             frmGameSetting.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(frmGameSetting);
             frmGameSetting.Show();
-            //frmGameSetting.Show();
-            //this.LayoutMdi(MdiLayout.Cascade);
+                //frmGameSetting.Show();
+                //this.LayoutMdi(MdiLayout.Cascade);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
         /// <summary>
         /// 判断是否有重复的窗体
@@ -103,29 +111,38 @@ namespace HandBookClient.Game
 
         private void frmMDI_Load(object sender, EventArgs e)
         {
-            //在主窗口打开的时候，就打开子窗口
-            frmChild.MdiParent = this;
+            try
+            {
+                //在主窗口打开的时候，就打开子窗口
+                frmChild.MdiParent = this;
             frmChild.TopLevel = false;
             //frmChild.Location = new Point(0, 0);//显示位置
             frmChild.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(frmChild);
             frmChild.Show();
-            //frmChild.Show();
+                //frmChild.Show();
 
 
 
-            ////在主窗口打开的时候，就打开子窗口
-            //frmChild2.MdiParent = this;
-            //frmChild2.TopLevel = false;
-            //frmChild2.Dock = DockStyle.Fill;
-            //splitContainer1.Panel1.Controls.Add(frmChild2);
-            //frmChild2.Show();
-            
+                ////在主窗口打开的时候，就打开子窗口
+                //frmChild2.MdiParent = this;
+                //frmChild2.TopLevel = false;
+                //frmChild2.Dock = DockStyle.Fill;
+                //splitContainer1.Panel1.Controls.Add(frmChild2);
+                //frmChild2.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void expandableSplitter1_ExpandedChanging(object sender, DevComponents.DotNetBar.ExpandedChangeEventArgs e)
         {
-            if (this.splitContainer1.Panel1Collapsed == false)
+            try
+            {
+                if (this.splitContainer1.Panel1Collapsed == false)
             {
                 expandableSplitter1.Left = 200;
                 splitContainer1.Panel1Collapsed = true;
@@ -135,46 +152,75 @@ namespace HandBookClient.Game
                 expandableSplitter1.Left = 25;
                 splitContainer1.Panel1Collapsed = false;
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void treeView1_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
         {
-          
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
+
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-           string name = e.Node.Text.ToString();
+            try
+            {
+                string name = e.Node.Text.ToString();
             if (name == "待办")
             {
                 if (IsExistfrm("frmToList")){ return;}
                frmChild2.ShowDialog();
              }
-            //if (name == "员工登记")
-            //{
-            //    guidesoft.yuangongguanli.FormYGList f = new yuangongguanli.FormYGList();
-            //    f.ShowDialog();
-            //}
-            //if (name == "客户登记")
-            //{
-            //    guidesoft.khdj.FormKHList f = new khdj.FormKHList(UserHelper.username);
-            //    f.ShowDialog();
-            //}
-            //if (name == "成品入库")
-            //{
-            //    guidesoft.cprk.Formlist f = new cprk.Formlist(UserHelper.username);
-            //    f.ShowDialog();
-            //}
-            //if (name == "部门登记")
-            //{
-            //    guidesoft.bmdj.FormBMDJ f = new bmdj.FormBMDJ(UserHelper.username);
-            //    f.ShowDialog();
-            //}
+                //if (name == "员工登记")
+                //{
+                //    guidesoft.yuangongguanli.FormYGList f = new yuangongguanli.FormYGList();
+                //    f.ShowDialog();
+                //}
+                //if (name == "客户登记")
+                //{
+                //    guidesoft.khdj.FormKHList f = new khdj.FormKHList(UserHelper.username);
+                //    f.ShowDialog();
+                //}
+                //if (name == "成品入库")
+                //{
+                //    guidesoft.cprk.Formlist f = new cprk.Formlist(UserHelper.username);
+                //    f.ShowDialog();
+                //}
+                //if (name == "部门登记")
+                //{
+                //    guidesoft.bmdj.FormBMDJ f = new bmdj.FormBMDJ(UserHelper.username);
+                //    f.ShowDialog();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
     }
 }

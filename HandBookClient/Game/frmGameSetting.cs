@@ -25,7 +25,7 @@ namespace HandBookClient.Game
         Game_Setting game_Setting = new Game_Setting();
         public frmGameSetting(Game_Setting obj)
         {
-            InitializeComponent();
+            try {             InitializeComponent();
             Init();
             this.game_Setting = obj;
             this.txtUrl.Text = obj.Url;
@@ -46,7 +46,13 @@ namespace HandBookClient.Game
                 this.dpDeadLine.Value = obj.DeadLine;
             }
             this.Text = "修改";
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -152,9 +158,10 @@ namespace HandBookClient.Game
             }
             }
 
-            catch (Exception ex1)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex1.Message);
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
 
         }

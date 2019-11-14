@@ -18,7 +18,8 @@ namespace HandBookClient
         }
 
         private void lsMenu_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
+        {try { 
+
             this.lsMenu.Focus();
             if (this.lsMenu.Items[0].Selected == true)
             {
@@ -38,7 +39,13 @@ namespace HandBookClient
             {
                 //MessageBox.Show("恐怖");
             }
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
     }
 }

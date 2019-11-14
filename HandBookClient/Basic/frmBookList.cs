@@ -60,9 +60,10 @@ namespace HandBookClient.Basic
                 }
             }
 
-            catch (Exception ex1)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex1.Message);
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
         }
         #region Event Handler

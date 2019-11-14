@@ -24,13 +24,20 @@ namespace HandBookClient.Basic
         Base_Book base_book = new Base_Book();
         public frmBook(Base_Book obj)
         {
+            try { 
             InitializeComponent();
             Init();
             this.base_book = obj;
             this.txtName.Text = obj.Name;
             this.txtRemark.Text = obj.ReMark;
             this.Text = "修改";
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -91,13 +98,14 @@ namespace HandBookClient.Basic
 
             }
 
-        }
-
-            catch (Exception ex1)
-            {
-                MessageBox.Show(ex1.Message);
             }
-}
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
+        }
         private void ClearControl()
         {
             this.txtName.Text = string.Empty;

@@ -76,17 +76,19 @@ namespace HandBookClient.Game
                 }
             }
 
-            catch (Exception ex1)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex1.Message);
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
         }
         #region Event Handler
         #region btnSearch_Click
         private void btnSearch_Click()
         {
-
-            pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
+            try
+            {
+                pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
             string sql = "select * from Game_Settings gs";
             string wherestr = " where 1=1 ";
             //
@@ -136,8 +138,14 @@ namespace HandBookClient.Game
                 this.toolStripLabel1.Text = "当前页" + currentPage.ToString();//当前页
                 this.toolStripLabel2.Text = "总页数" + pageCount.ToString();//总页数
             }
-           
-         
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
         #endregion
         #region btnAdd_Click
@@ -154,7 +162,7 @@ namespace HandBookClient.Game
         #region btnEdit_Click
         private void btnEdit_Click()
         {
-
+            try { 
             string[] str = new string[dataGridView1.Rows.Count];
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -180,12 +188,19 @@ namespace HandBookClient.Game
 
                 }
             }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
         #endregion
         #region btnDelete_Click
         private void btnDelete_Click()
         {
-
+            try { 
             string[] str = new string[dataGridView1.Rows.Count];
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -200,6 +215,13 @@ namespace HandBookClient.Game
                         MessageBox.Show("删除成功！", "信息");
                     }
                 }
+            }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
         }
         #endregion
@@ -264,8 +286,11 @@ namespace HandBookClient.Game
                     }
                 }
             }
-            catch(Exception ex) {
-                Console.Write(ex);
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
         }
         /// <summary>
@@ -275,6 +300,7 @@ namespace HandBookClient.Game
         [Obsolete("该方法已被弃用，请使用AutoSizeColumnFill")]
         private void AutoSizeColumn(DataGridView dgViewFiles)
         {
+            try { 
             int width = 0;
             //使列自使用宽度
             //对于DataGridView的每一个列都调整
@@ -300,6 +326,13 @@ namespace HandBookClient.Game
             ////冻结某列 从左开始 0，1，2
             //dgViewFiles.Columns[1].Frozen = true;
             dgViewFiles.Columns[1].FillWeight = 1;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
         /// <summary>
         /// 使DataGridView的列自适应宽度
@@ -307,18 +340,33 @@ namespace HandBookClient.Game
         /// <param name="dgViewFiles"></param>
         private void AutoSizeColumnFill(DataGridView dgViewFiles)
         {
-           
+           try { 
             //将模式改为填充。
 
                 dgViewFiles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-          
-            //////设置某列宽度比例
-            //dgViewFiles.Columns[1].FillWeight = 20;
+
+                //////设置某列宽度比例
+                //dgViewFiles.Columns[1].FillWeight = 20;
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void frmGameSettingList_Load(object sender, EventArgs e)
         {
-            
+            try {
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
 
         }
 
@@ -330,6 +378,7 @@ namespace HandBookClient.Game
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            try { 
             if (e.Button == MouseButtons.Right)
             {//右键表头操作
                 Point point = this.dataGridView1.PointToScreen(new Point(0, 0));
@@ -359,32 +408,45 @@ namespace HandBookClient.Game
             }
             btnSearch_Click();
             }
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
         private void Init()
         {
+            try { 
             this.cbTryType.DataSource = System.Enum.GetNames(typeof(TryTypeEnum));
             this.cbDevices.DataSource = System.Enum.GetNames(typeof(DevicesEnum));
             this.cbTryType.SelectedItem = null;
             this.cbDevices.SelectedItem = null;
-            //foreach (var item in System.Enum.GetNames(typeof(TryTypeEnum)))
-            //{
+                //foreach (var item in System.Enum.GetNames(typeof(TryTypeEnum)))
+                //{
 
-            //    cbTryType.Items.Add(item);
-            //}
-            //foreach (var item in System.Enum.GetNames(typeof(DevicesEnum)))
-            //{
+                //    cbTryType.Items.Add(item);
+                //}
+                //foreach (var item in System.Enum.GetNames(typeof(DevicesEnum)))
+                //{
 
-            //    cbDevices.Items.Add(item);
-            //}
+                //    cbDevices.Items.Add(item);
+                //}
 
+            }
 
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
+
 
         }
         private void initcontextMenuStrip() {
 
-
+            try { 
             DataGridViewColumnCollection columns = this.dataGridView1.Columns;
             for (int i = 0; i < columns.Count; i++)
             {
@@ -401,13 +463,20 @@ namespace HandBookClient.Game
                     this.contextMenuStrip1.Items.Add(toolStripMenuItem1);
                 }
             }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
 
 
-            
         }
 
     private    void MenuClicked(object sender, EventArgs e)
         {
+            try { 
             //以下主要是动态生成事件
             ToolStripMenuItem tsm = sender as ToolStripMenuItem;
             if (tsm.Checked)
@@ -420,13 +489,19 @@ namespace HandBookClient.Game
                 this.dataGridView1.Columns[tsm.Tag.ToString()].Visible = true;
                 tsm.Checked = true;
             }
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
         }
 
         private void btnToDo_Click(object sender, EventArgs e)
         {
-           
 
+            try { 
 
             string[] str = new string[dataGridView1.Rows.Count];
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -451,6 +526,13 @@ namespace HandBookClient.Game
                     sql.InsertValues("TryGameToDo", new string[] { tryGameToDoObject.Id.ToString(), tryGameToDoObject.Url, tryGameToDoObject.UserName, tryGameToDoObject.PassWord, tryGameToDoObject.ReMark, tryGameToDoObject.DeadLine.ToString(), tryGameToDoObject.IsDeleted.ToString() });
 
                 }
+            }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
             }
         }
     }
