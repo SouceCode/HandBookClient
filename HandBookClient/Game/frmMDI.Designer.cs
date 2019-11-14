@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("待办");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("游戏试玩", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("待办");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("游戏试玩", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuItemTryGame = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemTryGameSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.expandableSplitter1 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.menuItemTryGameReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -56,7 +57,8 @@
             // MenuItemTryGame
             // 
             this.MenuItemTryGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemTryGameSetting});
+            this.menuItemTryGameSetting,
+            this.menuItemTryGameReport});
             this.MenuItemTryGame.Name = "MenuItemTryGame";
             this.MenuItemTryGame.Size = new System.Drawing.Size(68, 21);
             this.MenuItemTryGame.Text = "游戏试玩";
@@ -64,7 +66,7 @@
             // menuItemTryGameSetting
             // 
             this.menuItemTryGameSetting.Name = "menuItemTryGameSetting";
-            this.menuItemTryGameSetting.Size = new System.Drawing.Size(100, 22);
+            this.menuItemTryGameSetting.Size = new System.Drawing.Size(152, 22);
             this.menuItemTryGameSetting.Text = "配置";
             this.menuItemTryGameSetting.Click += new System.EventHandler(this.menuItemGameSetting_Click);
             // 
@@ -119,17 +121,24 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "toDoNode";
-            treeNode1.Text = "待办";
-            treeNode2.Name = "tryGameNode";
-            treeNode2.Text = "游戏试玩";
+            treeNode3.Name = "toDoNode";
+            treeNode3.Text = "待办";
+            treeNode4.Name = "tryGameNode";
+            treeNode4.Text = "游戏试玩";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(114, 368);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
             this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
+            // 
+            // menuItemTryGameReport
+            // 
+            this.menuItemTryGameReport.Name = "menuItemTryGameReport";
+            this.menuItemTryGameReport.Size = new System.Drawing.Size(152, 22);
+            this.menuItemTryGameReport.Text = "报表";
+            this.menuItemTryGameReport.Click += new System.EventHandler(this.menuItemTryGameReport_Click);
             // 
             // frmMDI
             // 
@@ -165,5 +174,6 @@
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStripMenuItem menuItemTryGameReport;
     }
 }

@@ -222,5 +222,27 @@ namespace HandBookClient.Game
                 LogHelper.WriteLog("窗体异常", ex);
             }
         }
+
+        private void menuItemTryGameReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (IsExistMDI("frmReport") || IsExistsplitContainer1Panel2Controls("frmReport")) { return; }   //防止重复打开窗体，新增如下代码
+                Game.frmReportList frmReportList = new Game.frmReportList();
+                frmReportList.MdiParent = this;
+                frmReportList.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
+                frmReportList.TopLevel = false;
+                frmReportList.Dock = DockStyle.Fill;
+                splitContainer1.Panel2.Controls.Add(frmReportList);
+                frmReportList.Show();
+                //frmReportList.Show();
+                //this.LayoutMdi(MdiLayout.Cascade);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ex);
+            }
+        }
     }
 }

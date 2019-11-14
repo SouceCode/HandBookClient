@@ -109,6 +109,12 @@
     <Compile Include="Game\frmMDI.Designer.cs">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\frmReportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game\frmReportList.Designer.cs">
+      <DependentUpon>frmReportList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game\frmToList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Game\frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game\frmReportList.resx">
+      <DependentUpon>frmReportList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Game\frmToList.resx">
       <DependentUpon>frmToList.cs</DependentUpon>
