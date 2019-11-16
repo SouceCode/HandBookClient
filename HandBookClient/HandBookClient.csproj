@@ -182,6 +182,10 @@
       <Project>{456f4c6e-3a76-4eb6-9c3f-6d49212407d7}</Project>
       <Name>CommonClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobClassLibrary\JobClassLibrary.csproj">
+      <Project>{b1e833af-06d2-4a3c-a31a-4f30f5d3a828}</Project>
+      <Name>JobClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelClassLibrary\ModelClassLibrary.csproj">
       <Project>{de6aa634-c387-4c71-8044-5e0fbee86642}</Project>
       <Name>ModelClassLibrary</Name>
