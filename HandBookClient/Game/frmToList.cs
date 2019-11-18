@@ -22,6 +22,12 @@ namespace HandBookClient.Game
         DataSet ds = new DataSet();
         #endregion
 
+        #region 通告用
+        //关系是notifyIcondisplaytime<defaulttimerInterval
+        int defaulttimerInterval = 6000;//当个
+        int notifyIcondisplaytime = 5000;//每个
+        #endregion
+
         public frmToList()
         {
             InitializeComponent();
@@ -52,6 +58,12 @@ namespace HandBookClient.Game
                         }
                     }
 
+                    /*
+                     * 通知：便于跟踪待办
+                     * */
+                    timer1.Enabled = true;
+                    timer1.Interval = defaulttimerInterval;
+                    timer1.Start();
                 }
             }
             catch(Exception ex) {
@@ -226,6 +238,45 @@ namespace HandBookClient.Game
 
             }
            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+             
+                if (ds != null)
+                {
+                    foreach (DataTable item in ds.Tables)
+                    {
+                        timer1.Interval = defaulttimerInterval * item.Rows.Count;
+                        foreach (DataRow row in item.Rows)
+                        {
+                           
+                            //气泡提示
+                            notifyIcon1.ShowBalloonTip(notifyIcondisplaytime, "提示", "备注信息："+ row["ReMark"].ToString(), ToolTipIcon.Info);
+
+                        }
+                    }
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog("待办通告开启异常", ex);
+            }
+
+                  }
+
+        private void frmToList_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void frmToList_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

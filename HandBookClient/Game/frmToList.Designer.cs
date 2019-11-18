@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmToList));
             this.plControl = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.rtNotice = new System.Windows.Forms.RichTextBox();
@@ -36,6 +38,8 @@
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.lblSelect = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +126,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(599, 272);
             this.dataGridView1.TabIndex = 1;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmToList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -131,6 +145,8 @@
             this.Controls.Add(this.plControl);
             this.Name = "frmToList";
             this.Text = "frmToList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmToList_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmToList_FormClosed);
             this.Load += new System.EventHandler(this.frmToList_Load);
             this.plControl.ResumeLayout(false);
             this.plControl.PerformLayout();
@@ -149,5 +165,7 @@
         private System.Windows.Forms.Label lblSelect;
         private System.Windows.Forms.RichTextBox rtNotice;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
