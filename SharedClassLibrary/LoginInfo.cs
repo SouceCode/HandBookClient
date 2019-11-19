@@ -15,6 +15,9 @@ namespace SharedClassLibrary
         private string _Account = "";
         public string Account { get { return _Account; } set { _Account = value; } }
 
+        //用户帐号，登录帐号ID
+        private string _ID = "";
+        public string ID { get { return _ID; } set { _ID = value; } }
 
         //用户名
         private string _PassWord = "";

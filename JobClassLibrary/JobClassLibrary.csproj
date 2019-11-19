@@ -55,6 +55,10 @@
       <Project>{de6aa634-c387-4c71-8044-5e0fbee86642}</Project>
       <Name>ModelClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SharedClassLibrary\SharedClassLibrary.csproj">
+      <Project>{7604dac7-5fab-45bd-9d0e-b676220ba346}</Project>
+      <Name>SharedClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

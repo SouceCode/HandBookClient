@@ -18,6 +18,7 @@ namespace ModelClassLibrary
         //public TryTypeEnum TryType { get; set; }
         //public DevicesEnum Devices{ get; set; }
         //public bool IsCompleted{ get; set; }
+        //  public string UsersId{ get; set; }
 
         public long Id;
         public string Url;
@@ -29,7 +30,8 @@ namespace ModelClassLibrary
         public TryTypeEnum TryType;
         public DevicesEnum Devices;
         public bool IsCompleted;
-      
+        public string UsersId;
+
 
     }
 }

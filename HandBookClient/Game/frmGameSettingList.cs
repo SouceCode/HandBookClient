@@ -2,6 +2,7 @@
 using ModelClassLibrary;
 using ModelClassLibrary.Enums;
 using ModelClassLibrary.SqliteModel;
+using SharedClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,8 +92,17 @@ namespace HandBookClient.Game
                 pageSize = Convert.ToInt16(this.toolStripcbPageSize.Text);
             string sql = "select * from Game_Settings gs";
             string wherestr = " where 1=1 ";
-            //
-            if (!string.IsNullOrEmpty(this.txtUrl.Text))
+                #region 登录用户信息
+                if (LoginInfo.CurrentUser.Account==string.Empty)
+                {
+                    return;
+                }
+                //wherestr += " EXISTS (SELECT Id FROM Users u where gs.UsersId=u.Id AND u.UserName='" + LoginInfo.CurrentUser.Account + "') ";
+                wherestr += "  AND gs.UsersId='" + LoginInfo.CurrentUser.ID + "' ";
+                #endregion
+
+                //
+                if (!string.IsNullOrEmpty(this.txtUrl.Text))
             {
                 wherestr += " AND gs.Url='" + this.txtUrl.Text+"' ";
             }

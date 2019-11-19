@@ -1,4 +1,5 @@
 ﻿using CommonClassLibrary;
+using ModelClassLibrary;
 using SharedClassLibrary;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ namespace HandBookClient
 
             int pageCountPassword = HttpClientUtil.doGetMethodToObj<int>(url);
 
+                url = "/Users/GetUsersPageData?pageindex=0&sqlstr=" + strSqlPassword;
+
+                List<Users> usersList = HttpClientUtil.doGetMethodToObj<List<Users>>(url);
 
 
 
@@ -51,7 +55,7 @@ namespace HandBookClient
 
 
 
-            if (this.txtUserName.Text == "" || this.txtPassWord.Text == "")
+                if (this.txtUserName.Text == "" || this.txtPassWord.Text == "")
                 MessageBox.Show("账号和密码不能为空！", "登陆提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             else if (pageCountUserName <= 0)
                 //利用SqlHelpClass查询账号
@@ -65,8 +69,9 @@ namespace HandBookClient
                 LoginInfo.CurrentUser.Account = this.txtUserName.Text;
                 LoginInfo.CurrentUser.PassWord = this.txtPassWord.Text;
                 LoginInfo.CurrentUser.LoginTime = DateTime.Now;
-                //XmlToolClass.SetSuccessfulLoginAccount("账号", LoginInfo.CurrentUser.Account);//将账号写入xml
-                this.DialogResult = DialogResult.OK;
+                 LoginInfo.CurrentUser.ID = usersList.FirstOrDefault().Id.ToString();
+                    //XmlToolClass.SetSuccessfulLoginAccount("账号", LoginInfo.CurrentUser.Account);//将账号写入xml
+                    this.DialogResult = DialogResult.OK;
 
             }
             }

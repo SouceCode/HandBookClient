@@ -1,5 +1,6 @@
 ﻿using CommonClassLibrary;
 using ModelClassLibrary;
+using SharedClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,16 +45,16 @@ select count(1)*0.5   '预计收入' from Game_Settings WHERE  ISCOMPLETED='0'
 
             if (game_SettingList!=null)
             {
-                //List<Game_Setting> Income = game_SettingList.Where(x => x.IsCompleted = true).ToList();
-                var Income = from t in game_SettingList where t.IsCompleted == true select t;
+                //List<Game_Setting> Income = game_SettingList.Where(x => x.IsCompleted = true ).ToList();
+                var Income = from t in game_SettingList where t.IsCompleted == true && t.UsersId == LoginInfo.CurrentUser.ID select t;
                 //List<Game_Setting> Uncome = game_SettingList.Where(x => x.IsCompleted = false).ToList();
 
-                var Uncome = from f in game_SettingList where f.IsCompleted == false select f;
+                var Uncome = from f in game_SettingList where f.IsCompleted == false && f.UsersId == LoginInfo.CurrentUser.ID select f;
 
 
                 notices.AppendLine(noticesconfig["income"] + Income.Count() * 0.5 + "元");
                 notices.AppendLine(noticesconfig["uncome"] + Uncome.Count() * 0.5 + "元");
-
+                
                
 
                 ////保存配置信息的一般方式

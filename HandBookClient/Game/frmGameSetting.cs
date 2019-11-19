@@ -2,6 +2,7 @@
 using ModelClassLibrary;
 using ModelClassLibrary.Enums;
 using Newtonsoft.Json;
+using SharedClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,6 +95,8 @@ namespace HandBookClient.Game
                 game_Setting.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
                     game_Setting.Devices=(DevicesEnum)Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false);
                     game_Setting.IsCompleted = this.swbtnIsCompleted.Value;
+                    game_Setting.UsersId = LoginInfo.CurrentUser.ID;
+
                     string jsonbody = JsonConvert.SerializeObject(game_Setting);
                 string url = "/Game_Settings/" + game_Setting.Id;
                 bool isSuccess = HttpClientUtil.doPutMethodToObj(url, jsonbody);
@@ -142,8 +145,8 @@ namespace HandBookClient.Game
                 game_SettingInput.TryType = (TryTypeEnum)Enum.Parse(typeof(TryTypeEnum), this.cbTryType.SelectedItem.ToString(), false);
                     game_SettingInput.Devices = (DevicesEnum)Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false);
                     game_SettingInput.IsCompleted = this.swbtnIsCompleted.Value;
-                    
-                string jsonbody = JsonConvert.SerializeObject(game_SettingInput);
+                    game_SettingInput.UsersId = LoginInfo.CurrentUser.ID;
+                    string jsonbody = JsonConvert.SerializeObject(game_SettingInput);
 
                 //string jsonbody = "{\"Name\":\"" + this.txtUserName.Text + "\",\"ReMark\":\"" + this.txtRemark.Text + "\"}";
                 Game_Setting game_Setting = HttpClientUtil.doPostMethodToObj<Game_Setting>(url, jsonbody);
