@@ -43,12 +43,11 @@ namespace CommonClassLibrary
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
                     request.Method = "get";
                     request.ContentType = "application/json;charset=UTF-8";
-                 
 
                     //try
                     //{
 
-                        response = (HttpWebResponse)request.GetResponse();
+                    response = (HttpWebResponse)request.GetResponse();
                     //}
                     //catch (WebException e)
                     //{
@@ -72,11 +71,14 @@ namespace CommonClassLibrary
                     return default(T);
                 }
             }
-            catch {
+            catch (WebException webex)
+            {
+               
                 if (response != null)
                 {
                     response.Close();
                 }
+                LogHelper.WriteLog("API异常", webex);
                 return default(T);
             }
             finally {
@@ -143,7 +145,10 @@ namespace CommonClassLibrary
                     }
                     return default(T); }
             }
-            catch { throw; }
+            catch (WebException webex)
+            {
+                LogHelper.WriteLog("API异常", webex);
+                throw; }
             finally {
                 if (stream != null)
                 {
@@ -167,7 +172,7 @@ namespace CommonClassLibrary
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
-                     response = (HttpWebResponse)request.GetResponse();
+                    response = (HttpWebResponse)request.GetResponse();
                     using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.GetEncoding("UTF-8")))
                     {
                         if (response != null)
@@ -186,7 +191,10 @@ namespace CommonClassLibrary
                     return string.Empty;
                 }
             }
-            catch { throw; }
+            catch (WebException webex)
+            {
+                LogHelper.WriteLog("API异常", webex);
+                throw; }
             finally {
                 if (response != null)
                 {
@@ -207,7 +215,7 @@ namespace CommonClassLibrary
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
-                     stream = request.GetRequestStream();
+                    stream = request.GetRequestStream();
                     using (var writer = new StreamWriter(stream))
                     {
                         writer.Write(jsonBody);
@@ -233,8 +241,9 @@ namespace CommonClassLibrary
                     return default(T);
                 }
             }
-            catch
+            catch (WebException webex)
             {
+                LogHelper.WriteLog("API异常", webex);
                 throw;
             }
             finally {
@@ -264,7 +273,7 @@ namespace CommonClassLibrary
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
-                     stream = request.GetRequestStream();
+                    stream = request.GetRequestStream();
                     using (var writer = new StreamWriter(stream))
                     {
                         writer.Write(jsonBody);
@@ -307,7 +316,10 @@ namespace CommonClassLibrary
                     return false;
                 }
             }
-            catch { throw; }
+            catch (WebException webex)
+            {
+                LogHelper.WriteLog("API异常", webex);
+                throw; }
             finally {
                 if (stream != null)
                 {
@@ -364,7 +376,8 @@ namespace CommonClassLibrary
                     return false;
                 }
             }
-            catch {
+            catch(WebException webex) {
+                LogHelper.WriteLog("API异常", webex);
                 throw;
             }
             finally {
@@ -572,7 +585,7 @@ namespace CommonClassLibrary
                 {
                     response.Close();
                 }
-
+                LogHelper.WriteLog("API异常", webex);
                 return false;
             }
             finally {
