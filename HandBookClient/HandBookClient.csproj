@@ -85,11 +85,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistered.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistered.Designer.cs">
+      <DependentUpon>frmRegistered.cs</DependentUpon>
     </Compile>
     <Compile Include="Game\frmGameSetting.cs">
       <SubType>Form</SubType>
@@ -135,8 +147,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistered.resx">
+      <DependentUpon>frmRegistered.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Game\frmGameSetting.resx">
       <DependentUpon>frmGameSetting.cs</DependentUpon>
@@ -189,6 +207,10 @@
     <ProjectReference Include="..\ModelClassLibrary\ModelClassLibrary.csproj">
       <Project>{de6aa634-c387-4c71-8044-5e0fbee86642}</Project>
       <Name>ModelClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedClassLibrary\SharedClassLibrary.csproj">
+      <Project>{7604dac7-5fab-45bd-9d0e-b676220ba346}</Project>
+      <Name>SharedClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
