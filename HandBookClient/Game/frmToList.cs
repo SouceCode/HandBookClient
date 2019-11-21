@@ -62,7 +62,10 @@ namespace HandBookClient.Game
                      * 通知：便于跟踪待办
                      * */
                     timer1.Enabled = true;
-                    timer1.Interval = defaulttimerInterval;
+                    foreach (DataTable item in ds.Tables)
+                    {
+                        timer1.Interval = defaulttimerInterval * item.Rows.Count;
+                    }
                     timer1.Start();
                 }
             }
@@ -249,7 +252,6 @@ namespace HandBookClient.Game
                 {
                     foreach (DataTable item in ds.Tables)
                     {
-                        timer1.Interval = defaulttimerInterval * item.Rows.Count;
                         foreach (DataRow row in item.Rows)
                         {
                            
