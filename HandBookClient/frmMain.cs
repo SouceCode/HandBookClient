@@ -34,7 +34,8 @@ namespace HandBookClient
             }
             else if (this.lsMenu.Items[2].Selected == true)
             {
-                //MessageBox.Show("喜剧");
+                     HandBookClient.Job.frmMDI newForm = new HandBookClient.Job.frmMDI();//实例化窗体HandBookClient.Job.frmMDI，命名为newForm
+                    newForm.Show();//将实例化后的窗体打开
             }
             else if (this.lsMenu.Items[3].Selected == true)
             {
