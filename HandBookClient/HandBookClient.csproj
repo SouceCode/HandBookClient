@@ -133,6 +133,18 @@
     <Compile Include="Game\frmToList.Designer.cs">
       <DependentUpon>frmToList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Job\frmJobList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\frmJobList.Designer.cs">
+      <DependentUpon>frmJobList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job\frmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\frmMDI.Designer.cs">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Basic\frmBook.resx">
@@ -170,6 +182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Game\frmToList.resx">
       <DependentUpon>frmToList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\frmJobList.resx">
+      <DependentUpon>frmJobList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\frmMDI.resx">
+      <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

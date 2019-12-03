@@ -115,8 +115,30 @@ namespace HandBookClient.Game
             {
                 wherestr += " AND gs.IsCompleted=0 ";
             }
-            //
-            if (this.cbDevices.SelectedItem!=null&&this.cbDevices.SelectedItem.ToString() != "")
+
+                //
+                //超出控件的范围处理
+                if (this.dtpDealLineS.Value < DateTimePicker.MinimumDateTime || this.dtpDealLineS.Value > DateTimePicker.MaximumDateTime)
+                {
+
+                }
+                else
+                {
+                    wherestr += " AND gs.DealLine>= "+this.dtpDealLineS.Value;
+                }
+                //
+                //超出控件的范围处理
+                if (this.dtpDealLineE.Value < DateTimePicker.MinimumDateTime || this.dtpDealLineS.Value > DateTimePicker.MaximumDateTime)
+                {
+
+                }
+                else
+                {
+                    wherestr += " AND gs.DealLine<= " + this.dtpDealLineE.Value;
+                }
+
+                //
+                if (this.cbDevices.SelectedItem!=null&&this.cbDevices.SelectedItem.ToString() != "")
             {
                 wherestr += " AND gs.Devices= " + Convert.ToInt32(Enum.Parse(typeof(DevicesEnum), this.cbDevices.SelectedItem.ToString(), false));
             }
