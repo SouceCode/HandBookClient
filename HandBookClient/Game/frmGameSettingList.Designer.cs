@@ -63,6 +63,10 @@
             this.toolStripcbPageSize = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpDealLineS = new System.Windows.Forms.DateTimePicker();
+            this.dtpDealLineE = new System.Windows.Forms.DateTimePicker();
+            this.lblDealLineStart = new System.Windows.Forms.Label();
+            this.lblDealLineEnd = new System.Windows.Forms.Label();
             this.grbFilter.SuspendLayout();
             this.gbIsCompleted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -130,6 +134,10 @@
             // 
             // grbFilter
             // 
+            this.grbFilter.Controls.Add(this.lblDealLineEnd);
+            this.grbFilter.Controls.Add(this.lblDealLineStart);
+            this.grbFilter.Controls.Add(this.dtpDealLineE);
+            this.grbFilter.Controls.Add(this.dtpDealLineS);
             this.grbFilter.Controls.Add(this.btnToDo);
             this.grbFilter.Controls.Add(this.lblDevices);
             this.grbFilter.Controls.Add(this.lblTryType);
@@ -149,7 +157,7 @@
             // 
             // btnToDo
             // 
-            this.btnToDo.Location = new System.Drawing.Point(767, 37);
+            this.btnToDo.Location = new System.Drawing.Point(797, 37);
             this.btnToDo.Name = "btnToDo";
             this.btnToDo.Size = new System.Drawing.Size(75, 23);
             this.btnToDo.TabIndex = 10;
@@ -198,7 +206,7 @@
             this.gbIsCompleted.Controls.Add(this.rdbtnAll);
             this.gbIsCompleted.Controls.Add(this.rdbtnNo);
             this.gbIsCompleted.Controls.Add(this.rdbtnYES);
-            this.gbIsCompleted.Location = new System.Drawing.Point(519, 20);
+            this.gbIsCompleted.Location = new System.Drawing.Point(556, 24);
             this.gbIsCompleted.Name = "gbIsCompleted";
             this.gbIsCompleted.Size = new System.Drawing.Size(235, 47);
             this.gbIsCompleted.TabIndex = 5;
@@ -240,7 +248,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(767, 72);
+            this.btnReset.Location = new System.Drawing.Point(797, 74);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 2;
@@ -389,6 +397,38 @@
             this.panel2.Size = new System.Drawing.Size(878, 293);
             this.panel2.TabIndex = 4;
             // 
+            // dtpDealLineS
+            // 
+            this.dtpDealLineS.Location = new System.Drawing.Point(339, 18);
+            this.dtpDealLineS.Name = "dtpDealLineS";
+            this.dtpDealLineS.Size = new System.Drawing.Size(200, 21);
+            this.dtpDealLineS.TabIndex = 11;
+            // 
+            // dtpDealLineE
+            // 
+            this.dtpDealLineE.Location = new System.Drawing.Point(339, 50);
+            this.dtpDealLineE.Name = "dtpDealLineE";
+            this.dtpDealLineE.Size = new System.Drawing.Size(200, 21);
+            this.dtpDealLineE.TabIndex = 11;
+            // 
+            // lblDealLineStart
+            // 
+            this.lblDealLineStart.AutoSize = true;
+            this.lblDealLineStart.Location = new System.Drawing.Point(263, 21);
+            this.lblDealLineStart.Name = "lblDealLineStart";
+            this.lblDealLineStart.Size = new System.Drawing.Size(65, 12);
+            this.lblDealLineStart.TabIndex = 12;
+            this.lblDealLineStart.Text = "DealLine始";
+            // 
+            // lblDealLineEnd
+            // 
+            this.lblDealLineEnd.AutoSize = true;
+            this.lblDealLineEnd.Location = new System.Drawing.Point(263, 51);
+            this.lblDealLineEnd.Name = "lblDealLineEnd";
+            this.lblDealLineEnd.Size = new System.Drawing.Size(65, 12);
+            this.lblDealLineEnd.TabIndex = 13;
+            this.lblDealLineEnd.Text = "DealLine末";
+            // 
             // frmGameSettingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -451,5 +491,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnToDo;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblDealLineEnd;
+        private System.Windows.Forms.Label lblDealLineStart;
+        private System.Windows.Forms.DateTimePicker dtpDealLineE;
+        private System.Windows.Forms.DateTimePicker dtpDealLineS;
     }
 }
