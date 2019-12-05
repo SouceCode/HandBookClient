@@ -21,7 +21,7 @@ namespace CommonClassLibrary
         //private static string xiazhi_tomcat_url = Properties.Settings.Default.xiazhi_server_url;
         //private static string xiazhi_server_url = xiazhi_tomcat_url + "resteasy";
 
-#if DEBUG
+  #if DEBUG
         //开发环境（测试）
         private static string xiazhi_tomcat_url = "http://localhost:5000/";
 
@@ -30,8 +30,7 @@ namespace CommonClassLibrary
         //生产环境
         private static string xiazhi_tomcat_url = "http://192.168.1.107:5000/";
 
-#endif
-        private static string xiazhi_server_url = xiazhi_tomcat_url + "Api";
+#endif        private static string xiazhi_server_url = xiazhi_tomcat_url + "Api";
         // REST @GET 方法，根据泛型自动转换成实体，支持List<T>
         public static T doGetMethodToObj<T>(string metodUrl)
         {
@@ -408,82 +407,109 @@ namespace CommonClassLibrary
         public static DataTable toDataTable(IList list)
         {
             DataTable result = new DataTable();
+           
             if (list!=null)
             {
 
-           
-            if (list.Count > 0)
-            {
-                FieldInfo[] fieldInfos = list[0].GetType().GetFields();
-                foreach (FieldInfo fi in fieldInfos)
-                {
-                    //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Date") == fi.Name.Length - 4)
-                    //{
-                    //    result.Columns.Add(fi.Name, "".GetType());
-                    //    continue;
-                    //}
-                    //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Time") == fi.Name.Length - 4)
-                    //{
-                    //    result.Columns.Add(fi.Name, "".GetType());
-                    //    continue;
-                    //}
-                    //if (fi.Name.IndexOf("imagepath") >= 0)
-                    //{
-                    //    result.Columns.Add(fi.Name, Image.FromFile("1.jpg").GetType());
-                    //    continue;
-                    //}
-                    result.Columns.Add(fi.Name, fi.FieldType);
-                }
 
-                for (int i = 0; i < list.Count; i++)
+                if (list.Count > 0)
                 {
-                    ArrayList tempList = new ArrayList();
+                    FieldInfo[] fieldInfos = list[0].GetType().GetFields();
                     foreach (FieldInfo fi in fieldInfos)
                     {
-                        object obj = fi.GetValue(list[i]);
-                        if (null == obj)
-                        {
-                            tempList.Add(obj);
-                            continue;
-                        }
                         //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Date") == fi.Name.Length - 4)
                         //{
-                        //    int dateInt = (int)obj;
-                        //    if (0 == dateInt)
-                        //    {
-                        //        tempList.Add("");
-                        //        continue;
-                        //    }
-                        //    obj = DateTimeUtil.convertIntDatetime(dateInt).ToShortDateString();
+                        //    result.Columns.Add(fi.Name, "".GetType());
+                        //    continue;
                         //}
                         //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Time") == fi.Name.Length - 4)
                         //{
-                        //    int dateInt = int.Parse(obj.ToString());
-                        //    if (0 == dateInt)
-                        //    {
-                        //        tempList.Add("");
-                        //        continue;
-                        //    }
-                        //    obj = DateTimeUtil.convertIntDatetime(dateInt).ToString();
+                        //    result.Columns.Add(fi.Name, "".GetType());
+                        //    continue;
                         //}
                         //if (fi.Name.IndexOf("imagepath") >= 0)
                         //{
-                        //    if (null == obj)
-                        //    {
-                        //        tempList.Add("");
-                        //        continue;
-                        //    }
-                        //    WebClient myWebClient = new WebClient();
-                        //    MemoryStream ms = new MemoryStream(myWebClient.DownloadData(xiazhi_tomcat_url + obj.ToString()));
-                        //    obj = Image.FromStream(ms);
+                        //    result.Columns.Add(fi.Name, Image.FromFile("1.jpg").GetType());
+                        //    continue;
                         //}
-                        tempList.Add(obj);
+                        result.Columns.Add(fi.Name, fi.FieldType);
                     }
-                    object[] array = tempList.ToArray();
-                    result.TableName = list[0].GetType().Name;
-                    result.LoadDataRow(array, true);
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        ArrayList tempList = new ArrayList();
+                        foreach (FieldInfo fi in fieldInfos)
+                        {
+                            object obj = fi.GetValue(list[i]);
+                            if (null == obj)
+                            {
+                                tempList.Add(obj);
+                                continue;
+                            }
+                            //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Date") == fi.Name.Length - 4)
+                            //{
+                            //    int dateInt = (int)obj;
+                            //    if (0 == dateInt)
+                            //    {
+                            //        tempList.Add("");
+                            //        continue;
+                            //    }
+                            //    obj = DateTimeUtil.convertIntDatetime(dateInt).ToShortDateString();
+                            //}
+                            //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Time") == fi.Name.Length - 4)
+                            //{
+                            //    int dateInt = int.Parse(obj.ToString());
+                            //    if (0 == dateInt)
+                            //    {
+                            //        tempList.Add("");
+                            //        continue;
+                            //    }
+                            //    obj = DateTimeUtil.convertIntDatetime(dateInt).ToString();
+                            //}
+                            //if (fi.Name.IndexOf("imagepath") >= 0)
+                            //{
+                            //    if (null == obj)
+                            //    {
+                            //        tempList.Add("");
+                            //        continue;
+                            //    }
+                            //    WebClient myWebClient = new WebClient();
+                            //    MemoryStream ms = new MemoryStream(myWebClient.DownloadData(xiazhi_tomcat_url + obj.ToString()));
+                            //    obj = Image.FromStream(ms);
+                            //}
+                            tempList.Add(obj);
+                        }
+                        object[] array = tempList.ToArray();
+                        result.TableName = list[0].GetType().Name;
+                        result.LoadDataRow(array, true);
+                    }
                 }
-            }
+                else {
+                    var newType = list.GetType();
+
+                    Type t = newType.GetGenericArguments()[0];
+                    FieldInfo[] fieldInfos = t.GetFields();
+                    foreach (FieldInfo fi in fieldInfos)
+                    {
+                        //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Date") == fi.Name.Length - 4)
+                        //{
+                        //    result.Columns.Add(fi.Name, "".GetType());
+                        //    continue;
+                        //}
+                        //if (fi.Name.Length > 4 && fi.Name.LastIndexOf("Time") == fi.Name.Length - 4)
+                        //{
+                        //    result.Columns.Add(fi.Name, "".GetType());
+                        //    continue;
+                        //}
+                        //if (fi.Name.IndexOf("imagepath") >= 0)
+                        //{
+                        //    result.Columns.Add(fi.Name, Image.FromFile("1.jpg").GetType());
+                        //    continue;
+                        //}
+                        result.Columns.Add(fi.Name, fi.FieldType);
+                    }
+
+                }
             }
             return result;
         }

@@ -124,7 +124,7 @@ namespace HandBookClient.Game
                 }
                 else
                 {
-                    wherestr += " AND gs.DealLine>= "+this.dtpDealLineS.Value;
+                    wherestr += " AND gs.DeadLine>= '"+this.dtpDealLineS.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                 }
                 //
                 //超出控件的范围处理
@@ -134,7 +134,7 @@ namespace HandBookClient.Game
                 }
                 else
                 {
-                    wherestr += " AND gs.DealLine<= " + this.dtpDealLineE.Value;
+                    wherestr += " AND gs.DeadLine<= '" + this.dtpDealLineE.Value.ToString("yyyy-MM-dd HH:mm:ss") +"'";
                 }
 
                 //
@@ -156,7 +156,11 @@ namespace HandBookClient.Game
             if (currentPage < 1) currentPage = 1;
             if (currentPage > pageCount) currentPage = pageCount;
 
-            url = "/Game_Settings/GetGame_SettingsPageData?pageindex="+(currentPage-1)+"&sqlstr="+ sql + "&size="+ pageSize;
+
+                
+
+
+                url = "/Game_Settings/GetGame_SettingsPageData?pageindex="+(currentPage-1)+ "&table=Game_Settings  gs&where=" + wherestr + "&orderby="+orderstr + "&size="+ pageSize;
            
             List<Game_Setting> game_SettingList = HttpClientUtil.doGetMethodToObj<List<Game_Setting>>(url);
             if (game_SettingList!=null)
@@ -465,6 +469,8 @@ namespace HandBookClient.Game
 
                 //    cbDevices.Items.Add(item);
                 //}
+
+                dtpDealLineE.Value = DateTime.Now.AddDays(5);//默认加五天为一查询周期
 
             }
 

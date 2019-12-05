@@ -52,6 +52,8 @@ namespace HandBookClient.Job
             //在主窗口打开的时候，就打开子窗口
             frmChild.MdiParent = this;
             frmChild.Location = new Point(0, 0);//显示位置
+            frmChild.WindowState = FormWindowState.Maximized;//使MDI子窗体一打开就最大化
+
             frmChild.Show();
         }
     }

@@ -33,14 +33,19 @@ namespace HandBookClient
                 string strSqlUserName = "select * from Users where UserName='" + this.txtUserName.Text.Trim() + "'";
             string strSqlPassword = "select * from Users where UserName='" + this.txtUserName.Text.Trim() +
                 "' and PassWord='" + this.txtPassWord.Text + "'";
-            
-            string url = "/Users/GetUsersPageCount?sqlstr=" + strSqlUserName + "&size=1";
+                string strwhere = "where UserName='" + this.txtUserName.Text.Trim() +
+            "' and PassWord='" + this.txtPassWord.Text + "'";
+
+                string url = "/Users/GetUsersPageCount?sqlstr=" + strSqlUserName + "&size=1";
           int pageCountUserName = HttpClientUtil.doGetMethodToObj<int>(url);
              url = "/Users/GetUsersPageCount?sqlstr=" + strSqlPassword + "&size=1";
 
             int pageCountPassword = HttpClientUtil.doGetMethodToObj<int>(url);
 
-                url = "/Users/GetUsersPageData?pageindex=0&sqlstr=" + strSqlPassword;
+                url = "/Users/GetUsersPageData?pageindex=1&table=Users&where=" + strwhere;
+
+
+                url = "/Users/GetUsersPageData?pageindex=0&table=Users&where=" + strwhere + "&orderby=&size=1";
 
                 List<Users> usersList = HttpClientUtil.doGetMethodToObj<List<Users>>(url);
 

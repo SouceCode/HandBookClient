@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemADD = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemEDIT = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDEL = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -54,30 +52,17 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemADD,
-            this.ToolStripMenuItemEDIT,
             this.ToolStripMenuItemDEL});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
-            // 
-            // ToolStripMenuItemADD
-            // 
-            this.ToolStripMenuItemADD.Name = "ToolStripMenuItemADD";
-            this.ToolStripMenuItemADD.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemADD.Text = "新增";
-            // 
-            // ToolStripMenuItemEDIT
-            // 
-            this.ToolStripMenuItemEDIT.Name = "ToolStripMenuItemEDIT";
-            this.ToolStripMenuItemEDIT.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemEDIT.Text = "修改";
-            this.ToolStripMenuItemEDIT.Click += new System.EventHandler(this.ToolStripMenuItemEDIT_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
             // 
             // ToolStripMenuItemDEL
             // 
             this.ToolStripMenuItemDEL.Name = "ToolStripMenuItemDEL";
             this.ToolStripMenuItemDEL.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemDEL.Text = "删除";
+            this.ToolStripMenuItemDEL.Click += new System.EventHandler(this.ToolStripMenuItemDEL_Click);
+            this.ToolStripMenuItemDEL.DoubleClick += new System.EventHandler(this.ToolStripMenuItemDEL_DoubleClick);
             // 
             // frmJobList
             // 
@@ -97,8 +82,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemADD;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemEDIT;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDEL;
     }
 }

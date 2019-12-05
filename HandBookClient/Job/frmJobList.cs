@@ -1,5 +1,7 @@
 ﻿using CommonClassLibrary;
 using ModelClassLibrary;
+using Newtonsoft.Json;
+using SharedClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +33,10 @@ namespace HandBookClient.Job
                 DataTable dataTable = HttpClientUtil.toDataTable(job_SettingList);
                 this.dataGridView1.Columns.Clear();
                 this.dataGridView1.DataSource = dataTable;
+                    //设置不可编辑列
+                    dataGridView1.Columns["Id"].ReadOnly = true;
+                    dataGridView1.Columns["UsersId"].ReadOnly = true;
+                    dataGridView1.Columns["CreateDate"].ReadOnly = true;
                     i = dataGridView1.Rows.Count;//保存数据库已有的行数
                 }
             }
@@ -43,27 +49,7 @@ namespace HandBookClient.Job
         }
         int index = 0;//删除使用
         int i = 0;//保存第一次显示的行数，公共变量
-        private void ToolStripMenuItemEDIT_Click(object sender, EventArgs e)
-        {
-          
-            try
-            {
-                
-
-                string strRow = dataGridView1.CurrentCell.Value.ToString();
-                string url = "/Job_Settings/" + strRow;
-                bool isSuccess = HttpClientUtil.doDeleteMethod(url);
-                
-
-                dataGridView1.Rows.RemoveAt(index);
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
-                LogHelper.WriteLog("窗体异常", ee);
-            }//右键删除
-        }
-
+      
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -89,14 +75,10 @@ namespace HandBookClient.Job
                 }
                 else//更新。重点
                 {
-                    
-                    //string strcolumn1 = dataGridView1.Columns[e.ColumnIndex].HeaderText;//得到列标题
-                    //string strvalue1 = dataGridView1.CurrentCell.Value.ToString();//得到数据
-                    //string strid = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();//所选行第一列的数据
-                    //string strinsert = "update FilTer set " + strcolumn1 + " = '" + strvalue1 + "' where id = '" + strid + "'";
-                    ////更新数据可以使用此代码。前提条件是必须符合更新条件
-                    //SqlCommand comm = new SqlCommand(strinsert, conn);
-                    //comm.ExecuteNonQuery();
+
+                    DoUpdate();
+
+
                 }
             }
             catch (Exception ee)
@@ -104,30 +86,143 @@ namespace HandBookClient.Job
                 MessageBox.Show(ee.Message);
             }//单元格的值更改时发生（update&&insert）
         }
+        private void DoUpdate()
+        {
 
+
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
+            {
+
+                return;
+            }
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
+            {
+
+                return;
+            }
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[3].Value.ToString()))
+            {
+
+                return;
+            }
+
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString()))
+            {
+
+                return;
+            }
+
+
+            
+            Job_Setting job_SettingInput = new Job_Setting();
+            job_SettingInput.Id = Convert.ToInt64(dataGridView1.CurrentRow.Cells[0].Value);
+            job_SettingInput.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            job_SettingInput.ReMark = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            job_SettingInput.CreateDate = DateTime.Now;
+            job_SettingInput.IsClose = Convert.ToBoolean(dataGridView1.CurrentRow.Cells[4].Value);
+            job_SettingInput.UsersId = LoginInfo.CurrentUser.ID;
+
+
+            string jsonbody = JsonConvert.SerializeObject(job_SettingInput);
+
+            string url = "/Job_Settings/" + dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            bool isSuccess = HttpClientUtil.doPutMethodToObj(url, jsonbody);
+            if (isSuccess)
+            {
+                MessageBox.Show("修改成功！", "信息");
+            }
+
+
+           
+
+
+        } //update
         private void Newinsert()
         {
 
-            //string strda = "select * from FilTer";
-            //string strin = "insert FilTer(id) values('" + dataGridView1.CurrentCell.Value.ToString() + "') ";
 
-            //SqlConnection conn = connection();
-            //conn.Open();
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
+            {
+               
+                return;
+            }
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
+            {
+            
+                return;
+            }
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[3].Value.ToString()))
+            {
+             
+                return;
+            }
 
-            //DataSet ds = new DataSet();
-            //SqlDataAdapter da = new SqlDataAdapter(strda, conn);
-            //da.InsertCommand = new SqlCommand(strin, conn);
-            //da.Fill(ds, "数据表");
+            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString()))
+            {
+           
+                return;
+            }
 
-            //DataRow dr = ds.Tables[0].NewRow();
-            //dr[0] = strin;
-            //ds.Tables[0].Rows.Add(dr);
 
-            //da.Update(ds, ds.Tables[0].ToString());
-            //conn.Close();
+
+            string url = "/Job_Settings";
+            Job_Setting job_SettingInput = new Job_Setting();
+            job_SettingInput.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            job_SettingInput.ReMark = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            job_SettingInput.CreateDate = DateTime.Now;
+            job_SettingInput.IsClose = Convert.ToBoolean(dataGridView1.CurrentRow.Cells[4].Value);
+            job_SettingInput.UsersId = LoginInfo.CurrentUser.ID;
+
+           
+            string jsonbody = JsonConvert.SerializeObject(job_SettingInput);
+
+            Job_Setting job_Setting = HttpClientUtil.doPostMethodToObj<Job_Setting>(url, jsonbody);
+            if (job_Setting != null && job_Setting.Name != null)
+            {
+                MessageBox.Show("添加成功！", "信息");
+            }
+            else
+            {
+                MessageBox.Show("添加失败！", "信息");
+            }
+
+
+
             i = dataGridView1.Rows.Count;//保存添加后数据库已有的行数。重点
 
 
         } //insert
+
+        private void ToolStripMenuItemDEL_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItemDEL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                string strRow = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                string url = "/Job_Settings/" + strRow;
+                bool isSuccess = HttpClientUtil.doDeleteMethod(url);
+                if (isSuccess)
+                {
+                    MessageBox.Show("删除成功！", "信息");
+                }
+                else
+                {
+                    MessageBox.Show("删除失败！", "信息");
+                }
+
+                dataGridView1.Rows.RemoveAt(index);
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("系统发生异常，请联系管理员！", "错误");
+                LogHelper.WriteLog("窗体异常", ee);
+            }//右键删除
+        }
     }
 }

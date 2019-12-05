@@ -84,9 +84,9 @@ namespace HandBookClient.Basic
             if (currentPage < 1) currentPage = 1;
             if (currentPage > pageCount) currentPage = pageCount;
 
-            url = "/Base_Books/GetBase_BooksPageData?pageindex=" + (currentPage - 1) + "&sqlstr=" + sql + "&size=" + pageSize;
+            url = "/Base_Books/GetBase_BooksPageData?pageindex=" + (currentPage - 1) + "&table=Base_Books bb&where=" + wherestr + "&orderby=&size=" + pageSize;
 
-            
+
             List<Base_Book> base_BookList = HttpClientUtil.doGetMethodToObj<List<Base_Book>>(url);
             if (base_BookList != null)
             {
