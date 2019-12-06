@@ -12,34 +12,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Reflection;
-
+using System.Configuration;
 namespace CommonClassLibrary
 {
     public class HttpClientUtil
     {
-
-        //private static string xiazhi_tomcat_url = Properties.Settings.Default.xiazhi_server_url;
-        //private static string xiazhi_server_url = xiazhi_tomcat_url + "resteasy";
-
-  #if DEBUG
-        //开发环境（测试）
-        private static string xiazhi_tomcat_url = "http://localhost:5000/";
+        
+        private static string webapi_tomcat_url = ConfigurationManager.AppSettings["webapi_tomcat_url"];
+        private static string webapi_server_url = webapi_tomcat_url + "Api";
 
 
-#else
-        //生产环境
-        private static string xiazhi_tomcat_url = "http://192.168.1.107:5000/";
-
-#endif        private static string xiazhi_server_url = xiazhi_tomcat_url + "Api";
+       
         // REST @GET 方法，根据泛型自动转换成实体，支持List<T>
         public static T doGetMethodToObj<T>(string metodUrl)
         {
             HttpWebResponse response = null;
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "get";
                     request.ContentType = "application/json;charset=UTF-8";
 
@@ -117,9 +109,9 @@ namespace CommonClassLibrary
             Stream stream = null;
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "post";
                     request.ContentType = "application/json;charset=UTF-8";
                     stream = request.GetRequestStream();
@@ -166,9 +158,9 @@ namespace CommonClassLibrary
             HttpWebResponse response = null;
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
                     response = (HttpWebResponse)request.GetResponse();
@@ -209,9 +201,9 @@ namespace CommonClassLibrary
             Stream stream = null;
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
                     stream = request.GetRequestStream();
@@ -265,11 +257,11 @@ namespace CommonClassLibrary
             Stream stream = null;
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
 
 
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "put";
                     request.ContentType = "application/json;charset=UTF-8";
                     stream = request.GetRequestStream();
@@ -337,9 +329,9 @@ namespace CommonClassLibrary
 
             try
             {
-                if (CheckUrlVisit(xiazhi_server_url + metodUrl))
+                if (CheckUrlVisit(webapi_server_url + metodUrl))
                 {
-                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
                     request.Method = "delete";
                     request.ContentType = "application/json;charset=UTF-8";
                     response = (HttpWebResponse)request.GetResponse();
@@ -389,7 +381,7 @@ namespace CommonClassLibrary
         //// REST @DELETE 方法
         //public static bool doDeleteMethod(string metodUrl)
         //{
-        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(xiazhi_server_url + metodUrl);
+        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapi_server_url + metodUrl);
         //    request.Method = "delete";
         //    request.ContentType = "application/json;charset=UTF-8";
         //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();

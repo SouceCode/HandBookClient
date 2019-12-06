@@ -91,26 +91,16 @@ namespace HandBookClient.Job
 
 
             if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
-            {
+            {//Name
 
                 return;
             }
             if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
-            {
+            {//ReMark
 
                 return;
             }
-            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[3].Value.ToString()))
-            {
-
-                return;
-            }
-
-            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString()))
-            {
-
-                return;
-            }
+            
 
 
             
@@ -119,7 +109,7 @@ namespace HandBookClient.Job
             job_SettingInput.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             job_SettingInput.ReMark = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             job_SettingInput.CreateDate = DateTime.Now;
-            job_SettingInput.IsClose = Convert.ToBoolean(dataGridView1.CurrentRow.Cells[4].Value);
+            job_SettingInput.IsClose = Convert.ToBoolean(string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString()) ? "false" : dataGridView1.CurrentRow.Cells[4].Value.ToString());
             job_SettingInput.UsersId = LoginInfo.CurrentUser.ID;
 
 
@@ -133,7 +123,7 @@ namespace HandBookClient.Job
             }
 
 
-           
+
 
 
         } //update
@@ -142,26 +132,17 @@ namespace HandBookClient.Job
 
 
             if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[1].Value.ToString()))
-            {
-               
+            {//Name
+
                 return;
             }
             if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
-            {
-            
-                return;
-            }
-            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[3].Value.ToString()))
-            {
-             
-                return;
-            }
+            {//ReMark
 
-            if (string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString()))
-            {
-           
                 return;
             }
+            
+
 
 
 
@@ -170,7 +151,7 @@ namespace HandBookClient.Job
             job_SettingInput.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             job_SettingInput.ReMark = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             job_SettingInput.CreateDate = DateTime.Now;
-            job_SettingInput.IsClose = Convert.ToBoolean(dataGridView1.CurrentRow.Cells[4].Value);
+            job_SettingInput.IsClose = Convert.ToBoolean(string.IsNullOrEmpty(dataGridView1.CurrentRow.Cells[4].Value.ToString())?"false": dataGridView1.CurrentRow.Cells[4].Value.ToString());
             job_SettingInput.UsersId = LoginInfo.CurrentUser.ID;
 
            
