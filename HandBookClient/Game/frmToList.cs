@@ -250,18 +250,22 @@ namespace HandBookClient.Game
              
                 if (ds != null)
                 {
+                    string notifymsg = string.Empty;
                     foreach (DataTable item in ds.Tables)
                     {
                         foreach (DataRow row in item.Rows)
                         {
-                           
-                            //气泡提示
-                            notifyIcon1.ShowBalloonTip(notifyIcondisplaytime, "提示", "备注信息："+ row["ReMark"].ToString(), ToolTipIcon.Info);
+                            notifymsg += "备注信息：" + row["ReMark"].ToString();
+
 
                         }
                     }
 
-                    
+                    //气泡提示
+                    notifyIcon1.ShowBalloonTip(notifyIcondisplaytime, "提示", notifymsg, ToolTipIcon.Info);
+
+
+
                 }
             }
             catch (Exception ex)
